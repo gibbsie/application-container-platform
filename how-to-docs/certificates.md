@@ -12,8 +12,11 @@ You would want all communication between the user, through to the service and se
 
 #### **Certificates**
 
+ACP currently supports two modes for certificates, the first one legacy and being deprecated.
+
 - [kube-cert-manager and cfssl](https://github.com/UKHomeOffice/application-container-platform/blob/master/how-to-docs/kube-cert-manager.md)
+- [cert-mamager](https://github.com/UKHomeOffice/application-container-platform/blob/master/how-to-docs/cert-manager.md)
 
 #### **LetsEncrypt Limits**
 
-Note Letsencrypt while a free service does come with a number of service limits detailed [here](https://letsencrypt.org/docs/rate-limits/). Probably one of the most crucial for projects is the max certificate requests per week; currently standing at 20. In addition, there is a max 5 failures for per hostname with a freeze of 1 hour, so if you accidently mess up configuration you might hit this.
+Note Letsencrypt while a free service does come with a number of service limits detailed [here](https://letsencrypt.org/docs/rate-limits/). Probably one of the most crucial for projects is the max certificate requests per week; currently standing at 20. In addition, there is a max 5 failures for per hostname with a freeze of 1 hour, so if you accidentally mess up configuration you might hit this.
