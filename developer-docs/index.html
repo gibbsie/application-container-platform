@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Developer Getting Started Guide - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Developer Getting Started Guide";
+    var mkdocs_page_input_path = "developer-docs/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../how-to-docs/index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="index.html">Developer Getting Started Guide</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#acp-developer-documentation">ACP Developer Documentation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#introduction">Introduction</a></li>
+        
+            <li><a class="toctree-l3" href="#developer-getting-started-guide">Developer getting started guide</a></li>
+        
+            <li><a class="toctree-l3" href="#platform-hub">Platform Hub</a></li>
+        
+            <li><a class="toctree-l3" href="#project-getting-started-guide">Project getting started guide</a></li>
+        
+            <li><a class="toctree-l3" href="#acp-how-to-docs">ACP How-to Docs</a></li>
+        
+            <li><a class="toctree-l3" href="#developer-guide-to-continuous-integration-with-drone">Developer guide to Continuous Integration with Drone</a></li>
+        
+            <li><a class="toctree-l3" href="#writing-dockerfiles">Writing Dockerfiles</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Developer Getting Started Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="acp-developer-documentation">ACP Developer Documentation<a class="headerlink" href="#acp-developer-documentation" title="Permanent link">#</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
+<p>ACP serves as a platform for teams to build and deploy projects in the Home Office. In addition to other technologies that we use, we strongly recommend to get an understanding of two of the core technologies that ACP is based on - Docker and Kubernetes:
+<em> <a href="https://www.docker.com">Docker</a> is a software tool designed to make it easier to create, deploy and run applications by packaging up along with all its dependencies to containers.
+</em> <a href="https://kubernetes.io">Kubernetes</a> is an open-source platform for automating deployment, scaling,
+and operations of application containers across clusters of hosts, providing container-centric infrastructure.</p>
+<p>For further information on Docker and Kubernetes:
+<em> Docker
+  * <a href="https://docs.docker.com/engine/getstarted/">Docker getting started tutorial</a><br />
+</em> Kubernetes
+  * <a href="http://kubernetes.io/docs/whatisk8s/">What is Kubernetes?</a><br />
+  * <a href="https://www.youtube.com/watch?v=5gz8kOUstFc">Kubernetes talk to introduce the concepts</a></p>
+<h2 id="developer-getting-started-guide">Developer getting started guide<a class="headerlink" href="#developer-getting-started-guide" title="Permanent link">#</a></h2>
+<p>Some prerequisites are required before developing on ACP. <a href="dev-setup.html">This guide</a> will show you how to:</p>
+<ul>
+<li>Get access to the VPNs that allows you to connect to the platform</li>
+<li>Get setup with the kubectl client that lets you deploy applications to kubernetes</li>
+<li>Get access to Quay and Artifactory</li>
+</ul>
+<p>In addition, new developers should look at the <a href="../newuser.html">new user flow</a> documentation whilst going through this doc to serve as a checklist and make sure you are onboarded to all necessary platform services.</p>
+<h2 id="platform-hub">Platform Hub<a class="headerlink" href="#platform-hub" title="Permanent link">#</a></h2>
+<p><a href="https://hub.acp.homeoffice.gov.uk">The Platform Hub</a> serves as a central portal for users of ACP. It acts as an all-in-one place to find information, requests and also support for the platform. The hub also provides tools to develop, build, deploy and manage all your projects.</p>
+<p>You can submit <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/overview">support requests via the hub</a> located in <code>Support Requests</code> under the <code>Help &amp; Support</code> tab on the sidebar. These request templates cover a wide majority of general requests that users normally need. If your issue/request is not listed, please use the <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/general-request">General Request</a> support request.</p>
+<p>Updates are also on its way to include more self-service tools, along with documentation, FAQs and live status updates.</p>
+<blockquote>
+<p>Access to the Platform Hub requires the <code>ACP Platform</code> VPN profile. Please make sure you have followed the <a href="#Developer-getting-started-guide">Developer getting started guide</a> for instructions on connecting to VPNs.</p>
+</blockquote>
+<h2 id="project-getting-started-guide">Project getting started guide<a class="headerlink" href="#project-getting-started-guide" title="Permanent link">#</a></h2>
+<p>Kubernetes resources (including your applications!) are always deployed into a particular namespace.
+These namespaces provide separation between the different projects hosted on the platform.
+A project service can have more than one namespace. For example, you can have namespaces that are different environments but are part of the same project service (e.g. dev and prod namespaces). Or if you have different namespaces that are all related to one project service (e.g. a web-api and an application namespace). For instructions on getting new namespaces and other relevant resources on getting started can be found below: <a href="#ACP-How-to-Docs">ACP How-to Docs</a></p>
+<h2 id="acp-how-to-docs">ACP How-to Docs<a class="headerlink" href="#acp-how-to-docs" title="Permanent link">#</a></h2>
+<p>The How To Docs within the ACP repo provides a collection of how-to guides for both Developers and DevOps to use <a href="../how-to-docs/index.html">this</a></p>
+<h2 id="developer-guide-to-continuous-integration-with-drone">Developer guide to Continuous Integration with Drone<a class="headerlink" href="#developer-guide-to-continuous-integration-with-drone" title="Permanent link">#</a></h2>
+<p>Drone is what we use for Continuous Integration in ACP. <a href="../how-to-docs/drone-how-to.html">This guide</a> will cover how to use drone to test your PRs, build and push docker images, and to deploy.</p>
+<h2 id="writing-dockerfiles">Writing Dockerfiles<a class="headerlink" href="#writing-dockerfiles" title="Permanent link">#</a></h2>
+<p><a href="../how-to-docs/write-dockerfiles.html">This guide</a> covers best practice for building Dockerfiles, and lists our standard base images.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../newuser.html" class="btn btn-neutral float-right" title="New User Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../how-to-docs/index.html" class="btn btn-neutral" title="How To's"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../how-to-docs/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../newuser.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-03-01 13:07:28
+-->

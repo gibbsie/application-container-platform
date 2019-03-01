@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Kube-Cert-Managaer & Cloudflare SSL - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Kube-Cert-Managaer & Cloudflare SSL";
+    var mkdocs_page_input_path = "how-to-docs/kube-cert-manager.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Kube-Cert-Managaer & Cloudflare SSL</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="kube-cert-managaer-cloudflare-ssl">Kube-Cert-Managaer &amp; Cloudflare SSL<a class="headerlink" href="#kube-cert-managaer-cloudflare-ssl" title="Permanent link">#</a></h1>
+<p>Services:
+- <a href="https://github.com/PalmStoneGames/kube-cert-manager">kube-cert-manager</a> is used to retrieve Letencrypt certificates.
+- <a href="https://github.com/cloudflare/cfssl">cfssl</a> is an internal certificate service used to provide internal tls between pods / services.</p>
+<h4><strong>Domains and Challenge types</strong></h4>
+<p>At present two Let's Encrypt challenge types are supported for certificates which is controlled via the <code>stable.k8s.psg.io/kcm.provider</code> annotation on the Ingress resource; note if no annotation is present the default is <code>stable.k8s.psg.io/kcm.provider: route53</code>.</p>
+<ul>
+<li>route53: the domain must be hosted within the ACP route53 account, namely to allow kube-cert-manager to add the service record. If you are unsure if this is the case please check with the ACP team. DNS is optional for external sites but a requirement for sites seated behind the VPN.</li>
+<li>http: indicates a callback url for authentication. The domain can either be controlled externally via yourself or via the ACP team. Either way the dns record must be a CNAME to the external ingress hostname <em>(please check with the ACP team if you dont know)</em>. Obviously this challenge type can only be used on an external site. Note any IP white-listing on the ingress can still be used.</li>
+</ul>
+<h4><strong>As a developer I want to grab a certificate from Letsencrypt</strong></h4>
+<p>Below is an example of an ingress resource for a HTTPS host reachable over the internet. Note, your ingress resource using IP whitelisting is irrelivant here in regard to Letsencrypt i.e you can still protect the site with and ACL.</p>
+<ul>
+<li>The host <code>my-app.my-project.homeoffice.gov.uk</code> has a CNAME record to <code>ingress-external.prod.acp.homeoffice.gov.uk</code> (or relevant <code>ingress-external</code> address for the cluster you are using)</li>
+</ul>
+<pre><code class="YAML">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    # indicate the ingress SHOULD speak TLS between itself and pods - in version 0.18.0 of ingress this was deprecated.
+    ingress.kubernetes.io/secure-backends: &quot;true&quot;
+    # This replaces the old annotation secure-backends
+    ingress.kubernetes.io/backend-protocol: &quot;HTTPS&quot;
+    kubernetes.io/ingress.class: nginx-external
+    # ensure kube-cert-manager uses a http01 challenge
+    stable.k8s.psg.io/kcm.provider: http
+  labels:
+    # this is a toggle to indicate kube-cert-manager should handle this resource
+    stable.k8s.psg.io/kcm.class: default
+  name: my-app
+spec:
+  rules:
+  - host: my-app.my-project.homeoffice.gov.uk
+    http:
+      paths:
+      - backend:
+          serviceName: my-app
+          servicePort: 443
+        path: /
+  tls:
+  - hosts:
+    - my-app.my-project.homeoffice.gov.uk
+    secretName: my-app-external-tls
+</code></pre>
+
+<h4><strong>As a developer I want a certificate from a site behind the vpn</strong></h4>
+<p>Using Letsencrypt</p>
+<p>Below is an example of an ingress resource for a HTTPS host reachable via VPN or services on the private network.</p>
+<ul>
+<li>The host <code>my-app.my-project.homeoffice.gov.uk</code> has a CNAME record to <code>ingress-internal.prod.acp.homeoffice.gov.uk</code> (or relevant <code>ingress-internal</code> address for the cluster you are using)</li>
+<li>The host <code>my-app.my-project.homeoffice.gov.uk</code> is managed via Route53 within the same account that the cluster is running within (done by ACP team)</li>
+<li>The host <code>my-app.my-project.homeoffice.gov.uk</code> (or TLD) is listed as a <a href="https://github.com/UKHomeOffice/policy-admission/blob/master/pkg/authorize/kubecertmanager/doc.go#L33">Hosted Domain</a> within the custom policy admission controller (done by ACP team)</li>
+</ul>
+<pre><code class="YAML">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    # indicate the ingress SHOULD speak TLS between itself and pods - in version 0.18.0 of ingress this was deprecated.
+    ingress.kubernetes.io/secure-backends: &quot;true&quot;
+    # This replaces the old annotation secure-backends
+    ingress.kubernetes.io/backend-protocol: &quot;HTTPS&quot;
+    kubernetes.io/ingress.class: nginx-internal
+  labels:
+    stable.k8s.psg.io/kcm.class: default
+  name: my-app
+spec:
+  rules:
+  - host: my-app.my-project.homeoffice.gov.uk
+    http:
+      paths:
+      - backend:
+          serviceName: my-app
+          servicePort: 443
+        path: /
+  tls:
+  - hosts:
+    - my-app.my-project.homeoffice.gov.uk
+    secretName: my-app-internal-tls
+</code></pre>
+
+<h4><strong>Using LetsEncrypt with Ingress</strong></h4>
+<p>Assuming you are not bringing your own certificates, LetsEncrypt can be used to acquire certificates for both internal <em>(behind vpn NOT cluster TLS certs)</em> and external certificates. Simply place the annotation <code>stable.k8s.psg.io/kcm.class: default</code> into the ingress resource; A full list of the supported features can be found <a href="https://github.com/PalmStoneGames/kube-cert-manager/blob/master/docs/ingress.md">here</a>. Note at present we ONLY allow you to request certificates via the ingress resource, not by the third party resource.</p>
+<h4><strong>As a developer I want a certificate for my pod / service</strong></h4>
+<h5><strong>The CA bundle</strong></h5>
+<p>By default, in all namespaces a CA bundle has been added which can been mounted into the /etc/ssl/certs of the container and which contains the root CA used to verify authenticity of the certificates. An example of using it is given below.</p>
+<p>Below is example of how to acquire a certificate from CloudflareSSL.</p>
+<pre><code class="YAML">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: example
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: example
+    spec:
+      volumes:
+      - name: bundle
+        configMap:
+          name: bundle
+      - name: certs
+        emptyDir: {}
+      initContainers:
+      - name: certs
+        # PLEASE do not use latest, but check for the latest tag in the releases page of https://github.com/UKHomeOffice/cfssl-sidekick
+        image: quay.io/ukhomeofficedigital/cfssl-sidekick:latest
+        securityContext:
+          runAsNonRoot: true
+        args:
+        - --certs=/certs
+        - --domain=myservice.${KUBE_NAMESPACE}.svc.cluster.local
+        - --domain=another_domain_name
+        - --expiry=8760h
+        env:
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        volumeMounts:
+        # an emptyDir which the sidekicks writes the certificates
+        - name: certs
+          mountPath: /certs
+        # The platform CA Bundle hold the root ca used to verify the certificate chain
+        - name: bundle
+          mountPath: /etc/ssl/certs
+          readOnly: true
+      containers:
+      - name: your_application
+        image: quay.io/ukhomeofficedigital/some_image
+        ...
+        ports:
+        - name: https
+          port: 443
+          targetPort: 443
+        volumeMounts:
+        # You can configure your application to pick up the certificates from here (tls.pem and tls-key.pem)
+        - name: certs
+          mountPath: /certs
+          readOnly: true
+</code></pre>
+
+<p>To break down what is happening. Firstly we are adding two volumes <code>bundle</code> and <code>certs</code>.</p>
+<ul>
+<li>the <code>bundle</code> volume is mapped to a configmap which as indicated above is published by us into every namespace and contains the a certificate bundle. This is mounted into the default PKI directory of the container <code>/etc/ssl/certs</code> and permits the container to trust the service.</li>
+<li>the <code>certs</code> is a emptyDir which is a <a href="https://en.wikipedia.org/wiki/Tmpfs">tmpfs</a> volume and used to share the cecertificates between the sidekick and your application.</li>
+</ul>
+<p>We then inject into the <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/">initContainers</a> the sidekick service. The sidekick is responsible for</p>
+<ul>
+<li>locally generating a private key <em>(the private key itself never crosses the wire)</em></li>
+<li>generating a CSR for the certificate and requesting a signing from cloudflare service.</li>
+<li>once the certificate has been signed its placed into <code>--certs=dir</code> directory which in this case is the emptyDir shared across the containers.</li>
+</ul>
+<p>Note, if you wish to trust certificates generated by this service simply mounted the bundle into the certificates dorectory.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

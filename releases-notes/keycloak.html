@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Keycloak - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Keycloak";
+    var mkdocs_page_input_path = "releases-notes/keycloak.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../how-to-docs/index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Keycloak</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h1>
+<h4><strong>Keycloak v4.5.0</strong></h4>
+<p><strong>Enhancement</strong></p>
+<ul>
+<li>[KEYCLOAK-4622] - Use HS256 for refresh tokens</li>
+<li>[KEYCLOAK-4623] - Use HS256 for client registration tokens</li>
+<li>[KEYCLOAK-7270] - First Broker Login Link Without Authentication</li>
+<li>[KEYCLOAK-7604] - SAML test clients have confusing names/entityIDs</li>
+<li>[KEYCLOAK-8010] - Improve handling of <Conditions> SAML tag</li>
+<li>[KEYCLOAK-8072] - Investigate if we can drop server-openshift</li>
+<li>[KEYCLOAK-8265] - Document the default admin credentials when running Test Suite</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-6229] - Implement OpenShift Token Review Interface</li>
+<li>[KEYCLOAK-6285] - WWW-Authenticate challenge flow for 'oc login'</li>
+<li>[KEYCLOAK-6770] - JWS signatures using ES256 algorithms for signing</li>
+<li>[KEYCLOAK-7061] - Keycloak Docker image should provide a way to import realm files</li>
+<li>[KEYCLOAK-7435] - Add logout specific session to session endpoints in account service</li>
+<li>[KEYCLOAK-7560] - Token Signature SPI</li>
+<li>[KEYCLOAK-8146] - Add LocaleSelectorSPI to allow custom locale selection</li>
+<li>[KEYCLOAK-8263] - Allow overriding token expiration time on a client</li>
+<li>[KEYCLOAK-8264] - Updates to Token Review endpoint</li>
+<li>[KEYCLOAK-8273] - Failed to evaluate permissions when in permissive mode and using UMA tickets</li>
+<li>[KEYCLOAK-8416] - Add support for configuring welcome theme in docker image</li>
+</ul>
+<p><strong>Epic</strong></p>
+<ul>
+<li>[KEYCLOAK-8121] - Add support for additional token algorithms</li>
+</ul>
+<p><strong>Bug</strong></p>
+<ul>
+<li>[KEYCLOAK-3058] - Validation of "aud" in adapters</li>
+<li>[KEYCLOAK-6468] - AnonymousAuthenticationToken cannot be cast to KeycloakAuthenticationToken</li>
+<li>[KEYCLOAK-6962] - No documentation for rpms upgrade</li>
+<li>[KEYCLOAK-6971] - Requesting a token for same user multiple times concurrently causes 401 errors</li>
+<li>[KEYCLOAK-7608] - FolderThemeProvider throws NPE when the themes are located on the classpath</li>
+<li>[KEYCLOAK-7661] - Keycloak does not build on windows environment due “testAllTheZipThings” failure</li>
+<li>[KEYCLOAK-7987] - Can't set authorization enabled when using kcreg</li>
+<li>[KEYCLOAK-8016] - Broken new Account Console in Chrome</li>
+<li>[KEYCLOAK-8070] - wrong expose headers when enable cors and policyenforcer</li>
+<li>[KEYCLOAK-8133] - Can't Sucessfully inject a custom KeycloakSpringBootConfigResolver in the Keycloak Spring Boot Security Adapter</li>
+<li>[KEYCLOAK-8168] - PEP is resolving claims twice under certain circumstances</li>
+<li>[KEYCLOAK-8180] - Welcome Screen sporadically fails to load in Firefox</li>
+<li>[KEYCLOAK-8189] - Broken Google Social Login test</li>
+<li>[KEYCLOAK-8190] - Cannot compile Node.js adapter UI tests</li>
+<li>[KEYCLOAK-8222] - Performance issue when loading user list</li>
+<li>[KEYCLOAK-8270] - Cannot remove "Not Before" or "Not On or After" from a Time Policy</li>
+<li>[KEYCLOAK-8274] - Realm export "uma_protection" role not reproducable</li>
+<li>[KEYCLOAK-8281] - Deletion of client and users with token exchange policy leads to breaking errors</li>
+<li>[KEYCLOAK-8308] - Deprecate token_introspection_endpoint claim from OIDC discovery document</li>
+<li>[KEYCLOAK-8315] - Completely broken Node.js adapter</li>
+<li>[KEYCLOAK-8327] - Token Introspect Test for Refresh Token Mistake</li>
+<li>[KEYCLOAK-8378] - Infinispan version mismatch in prod-arguments</li>
+<li>[KEYCLOAK-8425] - AdapterExecutionDecider throws NPE for cluster tests</li>
+<li>[KEYCLOAK-8440] - QuickStart does not build straight forward from GitHub clone</li>
+</ul>
+<p><strong>Story</strong></p>
+<ul>
+<li>[KEYCLOAK-8122] - Long lived tokens for OpenShift</li>
+</ul>
+<p><strong>Task</strong></p>
+<ul>
+<li>[KEYCLOAK-6332] - Switch Firefox driver to GeckoDriver once Firefox ESR 52.x is not supported</li>
+<li>[KEYCLOAK-6638] - Audience support for Client Scopes</li>
+<li>[KEYCLOAK-7582] - Clustering support to Keycloak server image</li>
+<li>[KEYCLOAK-7742] - Investigate failing Admin Console UI tests</li>
+<li>[KEYCLOAK-7813] - Coordinate the transfer or keycloak-proxy repository to Keycloak organization</li>
+<li>[KEYCLOAK-7915] - Implement trigger of Test pipeline using UMB</li>
+<li>[KEYCLOAK-8024] - Install JMS Messaging plugin to keycloak-jenkins</li>
+<li>[KEYCLOAK-8057] - Investigate React Framework</li>
+<li>[KEYCLOAK-8206] - Use HS256 for action tokens</li>
+<li>[KEYCLOAK-8207] - Use HS256 for cookie tokens</li>
+<li>[KEYCLOAK-8211] - Use HS256 for authorization permission tickets</li>
+<li>[KEYCLOAK-8236] - Bot command for executing tests (test command) can be without additional paramters</li>
+<li>[KEYCLOAK-8238] - Create required clients in OpenShift integration script</li>
+<li>[KEYCLOAK-8285] - Remove user-storage-jpa and user-storage-simple from Keycloak repository</li>
+<li>[KEYCLOAK-8289] - Remove authorization services from product preview profile</li>
+<li>[KEYCLOAK-8297] - Docs for audience</li>
+<li>[KEYCLOAK-8319] - Initial pipeline for product test
+*</li>
+</ul>
+<h4><strong>Keycloak v4.4.0</strong></h4>
+<p><strong>Enhancement</strong></p>
+<ul>
+<li>[KEYCLOAK-7161] - Refactor PhotozAuthz tests to not use hard waits</li>
+<li>[KEYCLOAK-7584] - Doublecheck admin console tests passing after clientScopes added</li>
+<li>[KEYCLOAK-7594] - Fix cross-dc integration and update Cross-dc integration to ISPN server 9.2.4 and JDG 7.2</li>
+<li>[KEYCLOAK-7595] - Upgrade aesh to 1.4</li>
+<li>[KEYCLOAK-7596] - Doublecheck migration scripts and all tests pass for Wildfly 13</li>
+<li>[KEYCLOAK-7858] - OIDC servlet filter adapter OSGi support</li>
+<li>[KEYCLOAK-7991] - Role-Resource in the Admin-API-Client is missing pagination params</li>
+<li>[KEYCLOAK-8054] - Use BOMREST property in product config files</li>
+<li>[KEYCLOAK-8069] - Fixed hostname provider should read ports from request</li>
+<li>[KEYCLOAK-8075] - Provide a better error handling for Express when access is denied</li>
+<li>[KEYCLOAK-8076] - Remove deprecation warning messages from Node.js adapter</li>
+<li>[KEYCLOAK-8134] - uma-ticket rpt token endpoint does not evaluate policies without permission value(s)</li>
+<li>
+<p>[KEYCLOAK-8241] - Use BOMREST property in nodejs-connect product config
+*
+<strong>Feature Request</strong></p>
+</li>
+<li>
+<p>[KEYCLOAK-3334] - Enable authorization services to Node.js adapter</p>
+</li>
+<li>[KEYCLOAK-5520] - Script based ProtocolMapper for SAML</li>
+<li>[KEYCLOAK-7222] - forgot password redirect to account client</li>
+<li>[KEYCLOAK-7751] - Auth welcome page - HTML code</li>
+<li>[KEYCLOAK-7891] - Configure SSL certificates in Docker image</li>
+<li>[KEYCLOAK-8056] - Configure hostname in Docker image</li>
+<li>[KEYCLOAK-8145] - Configure keystore when running KeycloakServer using TLS</li>
+<li>[KEYCLOAK-8147] - Support Content-Security-Policy-Report-Only security header</li>
+<li>[KEYCLOAK-8152] - Allow passing current locale to OAuth2 IdPs</li>
+</ul>
+<p><strong>Epic</strong></p>
+<ul>
+<li>[KEYCLOAK-6275] - Improve usability of xPaaS images</li>
+<li>[KEYCLOAK-6781] - Upgrade to WildFly 13 Final</li>
+</ul>
+<p><strong>Bug</strong></p>
+<ul>
+<li>[KEYCLOAK-5226] - Travis builds fail for default trusty image</li>
+<li>[KEYCLOAK-6086] - Spring boot app doesn't start with Keycloak and Jetty combination</li>
+<li>[KEYCLOAK-6411] - Unable to provision database on MariaDB 10.3.4+</li>
+<li>[KEYCLOAK-6706] - E-mail verification won't let user back into the app</li>
+<li>[KEYCLOAK-6803] - Sign-up error with custom UserStorageProvider</li>
+<li>[KEYCLOAK-7087] - Calling admin routes without data crashes NodeJS app</li>
+<li>[KEYCLOAK-7160] - Completely broken AuthZ Configs in IE</li>
+<li>[KEYCLOAK-7243] - Link are broken in documentaion</li>
+<li>[KEYCLOAK-7394] - LDAP Connections can't be tested using UI</li>
+<li>[KEYCLOAK-7695] - Authorization response with implicit flow should contain token_type and expires_in</li>
+<li>[KEYCLOAK-7731] - KeycloakUriBuilder removes well known ports (80 / 443) even if the issuer url in the token includes it</li>
+<li>[KEYCLOAK-7752] - CLIENT_INITIATED_ACCOUNT_LINKING_ERROR with invalid_token</li>
+<li>[KEYCLOAK-7754] - UMA token introspection endpoint does not conform to specification</li>
+<li>[KEYCLOAK-7757] - Deleting scopes in account console doesn't work</li>
+<li>[KEYCLOAK-7782] - keycloak Groups click view all can't query out</li>
+<li>[KEYCLOAK-7797] - Misplaced question marks</li>
+<li>[KEYCLOAK-7911] - Wrong version of Node.js adapters - Final missing</li>
+<li>[KEYCLOAK-7943] - NullPointerException when SAML User Property mapper is empty/blank</li>
+<li>[KEYCLOAK-7944] - Fail to create a primary key on (USER_SESSION_ID, CLIENT_ID, OFFLINE_FLAG) when migrating to 3.4.3</li>
+<li>[KEYCLOAK-7970] - Fresh authSession not started for correct client when handling action tokens</li>
+<li>[KEYCLOAK-7975] - updating execution with Oracle DB causes unique constraint (DBALLO00.CONSTRAINT_AUTH_CFG_PK) violated</li>
+<li>[KEYCLOAK-8012] - Unable to issue RPT token after server restart - NullPointerException</li>
+<li>[KEYCLOAK-8068] - IP access control broken in undertow current version</li>
+<li>[KEYCLOAK-8073] - cli unusable on FreeBSD</li>
+<li>[KEYCLOAK-8080] - Update Realm Events Config doesn't create an admin event</li>
+<li>[KEYCLOAK-8095] - Keycloak "SSSD" user federation option doesn't shows up on the drop down menu</li>
+<li>[KEYCLOAK-8101] - NPE in PathBasedKeycloakConfigResolver when cache is empty</li>
+<li>[KEYCLOAK-8109] - StaxParserUtil.getDOMElement can return incomplete tree</li>
+<li>[KEYCLOAK-8119] - Migration tests doesn't reflect if some features are not enabled</li>
+<li>[KEYCLOAK-8120] - NullPointerException in ClaimInformationPointProviderTest when product profile is used</li>
+<li>[KEYCLOAK-8132] - Missing type definitions for parsed tokens in Keycloak Javascript Typescript declarations.</li>
+<li>[KEYCLOAK-8138] - Several tests failing in product profile</li>
+<li>[KEYCLOAK-8142] - Regression in proper handling of public endpoints in AbstractPolicyEnforcer</li>
+<li>[KEYCLOAK-8150] - Performance regression between 3.4.3.Final and 4.3.0.Final</li>
+<li>[KEYCLOAK-8178] - AdminEventTest.testGetRepresentation failing with many databases (mysql, postresql, mariadb, oracle))</li>
+<li>[KEYCLOAK-8183] - Database is repeatedly queried for resource server if client has authz not enabled</li>
+<li>
+<p>[KEYCLOAK-8218] - BaseSAML2BindingBuilder cleans URL parameters in a SAML provider
+*
+<strong>Task</strong></p>
+</li>
+<li>
+<p>[KEYCLOAK-6743] - Adapter tests - update the server maintanance according to e.g. test annotation (cluster, crossdc)</p>
+</li>
+<li>[KEYCLOAK-6746] - Adapter tests - execute (or skip) particular tests based on app server-container</li>
+<li>[KEYCLOAK-6974] - Update to Infinispan 9</li>
+<li>[KEYCLOAK-6975] - Update configuration files for WF 13</li>
+<li>[KEYCLOAK-6976] - Refactor to accommodate removed jndi-name in cache-container</li>
+<li>[KEYCLOAK-7231] - Add Example adapter tests for app-server-undertow (without Photoz test class)</li>
+<li>[KEYCLOAK-7437] - Support for non-persistent consents through prompt=consent</li>
+<li>[KEYCLOAK-7470] - Client scope ordering capability</li>
+<li>[KEYCLOAK-7488] - Keycloak OpenShift template(s)</li>
+<li>[KEYCLOAK-7770] - Instabilities in the keycloak-pipeline</li>
+<li>[KEYCLOAK-7925] - Prepare test suite for New Acct Mgt Console Tests</li>
+<li>[KEYCLOAK-8052] - Change Travis job from Node.js adapter to always build the latest changes from Keycloak server</li>
+<li>[KEYCLOAK-8067] - Provide an up to date Docker image for the Keycloak server</li>
+<li>[KEYCLOAK-8093] - Add IDs to HTML elements for better testability</li>
+<li>[KEYCLOAK-8103] - Remove deprecated images</li>
+<li>[KEYCLOAK-8116] - Change Travis job from Node.js adapter to use Docker</li>
+<li>[KEYCLOAK-8127] - Make sure adapter tests are passing and correct adapters tested</li>
+<li>[KEYCLOAK-8139] - Align tests, documentation and downloads with supported Wildfly adapters</li>
+<li>[KEYCLOAK-8170] - Add build description to the pipeline</li>
+<li>[KEYCLOAK-8171] - Limit time execution of the keycloak test pipeline</li>
+<li>[KEYCLOAK-8174] - Admin console tests for the "Client Scopes" tab of the client</li>
+<li>[KEYCLOAK-8188] - Add ability to exclude failing or unstable tests from pipeline execution</li>
+<li>[KEYCLOAK-8246] - Disable Base UI tests by default</li>
+</ul>
+<h4><strong>Keycloak v4.3.0</strong></h4>
+<p><strong>Enhancement</strong></p>
+<ul>
+<li>[KEYCLOAK-5289] - support hosted domain for Google logins</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-7635] - Authenticate clients with x509 certificate</li>
+<li>[KEYCLOAK-7967] - Hostname SPI</li>
+</ul>
+<p><strong>Epic</strong></p>
+<ul>
+<li>[KEYCLOAK-5522] - Add support for Fuse 7</li>
+</ul>
+<p><strong>Bug</strong></p>
+<ul>
+<li>[KEYCLOAK-6818] - Keycloak creates an extra AUTH_SESSION_ID cookie with a path of “/auth” when logging in</li>
+<li>[KEYCLOAK-6832] - Destination Validation should ignore whether default port is explicitly specified</li>
+<li>[KEYCLOAK-7528] - Token endpoint doesn't set Cache-Control and Pragma header</li>
+<li>[KEYCLOAK-7562] - ClientInitiatedAccountLinkTest#testErrorConditions fails</li>
+<li>[KEYCLOAK-7946] - Variable rather than intended value showing in RH-SSO doc</li>
+<li>[KEYCLOAK-7954] - OIDC Provider doesn't skip token validation if URL is empty</li>
+<li>[KEYCLOAK-7974] - Fix typo in remove credentials alert</li>
+<li>[KEYCLOAK-7984] - RequiredActionProviderEntity priority migration issue</li>
+<li>[KEYCLOAK-7985] - Version migration the database table names do not match</li>
+<li>[KEYCLOAK-7986] - Migration test fails for migration from 3.4.3.Final</li>
+<li>[KEYCLOAK-7988] - New keycloak-bot commands convention is not mentioned in README.md</li>
+<li>[KEYCLOAK-7989] - Running server config migration fails due the Hostname SPI</li>
+<li>[KEYCLOAK-7994] - Move Fuse examples into test-apps</li>
+<li>[KEYCLOAK-8002] - Cannot build new Account Console</li>
+<li>[KEYCLOAK-8003] - Migration to 4.2.1 extracting RESOURCE_URIs fails with fine-grained admin permissions</li>
+<li>[KEYCLOAK-8007] - Cannot compile Console UI and Welcome Page tests</li>
+<li>[KEYCLOAK-8015] - Migration into 4.2.1.Final fails from version 3.4.3.Final</li>
+<li>[KEYCLOAK-8035] - Failing GitLab Social Login test</li>
+<li>[KEYCLOAK-8036] - Misplaced IdPs buttons on the Login Page</li>
+<li>[KEYCLOAK-8046] - X509 Client Authenticator sends Client entity twice</li>
+<li>[KEYCLOAK-8048] - Testsuite does not compile due to cross-PR interference</li>
+</ul>
+<h4><strong>Keycloak v4.2.1</strong></h4>
+<p><strong>Bug</strong></p>
+<ul>
+<li>[KEYCLOAK-7984] - RequiredActionProviderEntity priority migration issue</li>
+<li>[KEYCLOAK-7985] - Version migration the database table names do not match</li>
+<li>[KEYCLOAK-7986] - Migration test fails for migration from 3.4.3.Final</li>
+<li>[KEYCLOAK-7998] - File based realm export breaks after migration from Keycloak 3.4.3 to 4.2.1</li>
+</ul>
+<h4><strong>Keycloak v4.2.0</strong></h4>
+<p><strong>Enhancement2</strong></p>
+<ul>
+<li>[KEYCLOAK-4407] - Ability to restart arquillian containers from test</li>
+<li>[KEYCLOAK-5609] - An option to create claims with dots (.) in them</li>
+<li>[KEYCLOAK-6577] - Unable to map claim attributes with dots (.) in them</li>
+<li>[KEYCLOAK-7703] - PathBasedKeycloakConfigResolver - more generic behavior</li>
+<li>[KEYCLOAK-7792] - Always preserve URL fragment in redirectUri</li>
+<li>[KEYCLOAK-7876] - Improve stability of fuse7 hawtio test</li>
+<li>[KEYCLOAK-7924] - Speed up cross-dc tests</li>
+<li>[KEYCLOAK-7959] - OAuth 2.0 Certificate Bound Access Tokens in Reverse Proxy Deployed Environment</li>
+<li>[KEYCLOAK-7973] - Possibility to add classpath elements to KeycloakServer</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-1925] - SAML adapter multitenant support</li>
+<li>[KEYCLOAK-2606] - In-app browser tab support for Cordova</li>
+<li>[KEYCLOAK-5629] - Add credential endpoints to account service</li>
+<li>[KEYCLOAK-6313] - Changing execution order of required actions easily feature</li>
+<li>[KEYCLOAK-7105] - Notification needs to be lower</li>
+<li>[KEYCLOAK-7201] - OIDC Identity Brokering with Client parameter forward</li>
+<li>[KEYCLOAK-7294] - Password Page - Angular</li>
+<li>[KEYCLOAK-7846] - Turn off disallowed features</li>
+</ul>
+<p>*<em>Epic</em></p>
+<ul>
+<li>[KEYCLOAK-6176] - Stable and reliable CI that can be used to test PRs, master and releases</li>
+</ul>
+<p><strong>Bug</strong></p>
+<ul>
+<li>[KEYCLOAK-2886] - Cluster tests fail when running from IDE</li>
+<li>[KEYCLOAK-4662] - Keycloak adapter missing configuration attribute "proxy-url"</li>
+<li>[KEYCLOAK-6308] - Disable 'secret question credentials' fails</li>
+<li>[KEYCLOAK-6314] - After a terms &amp; conditions rejection, an "internal server error has ocurred" happens</li>
+<li>[KEYCLOAK-6708] - NullPointerException when integrating with IDP that returns a SAML XML that does not contain the fields Keycloak expects by default</li>
+<li>[KEYCLOAK-6866] - Error 404 after changing locale while authenticating using X.509</li>
+<li>[KEYCLOAK-7497] - Remove Babel transpiler</li>
+<li>[KEYCLOAK-7524] - Vertical Nav Doesn't close on secondary click</li>
+<li>[KEYCLOAK-7663] - Deleting identity provider does not delete it's mappers</li>
+<li>[KEYCLOAK-7795] - "Back to <app>" missing from Welcome Page</li>
+<li>[KEYCLOAK-7802] - Broken HoKTest</li>
+<li>[KEYCLOAK-7805] - Broken PayPal and Bitbucket Social Login tests</li>
+<li>[KEYCLOAK-7816] - Tech preview features (like authz) are run by default</li>
+<li>[KEYCLOAK-7823] - Keycloak returns wrong HTTP status during SPNEGO authentication</li>
+<li>[KEYCLOAK-7840] - Secret in keycloak.json and client-import.json doesn't match</li>
+<li>[KEYCLOAK-7860] - proxy-address-forwarding option is not added to https listener in Docker image</li>
+<li>[KEYCLOAK-7872] - Doesn't remove Identity Provider Mapper after removing identity provider</li>
+<li>[KEYCLOAK-7881] - Docker image jboss/keycloak doesn't contain jq</li>
+<li>[KEYCLOAK-7913] - Invalid naming of JPA changelog files</li>
+<li>[KEYCLOAK-7934] - Dataset generator cannot create "empty" mappings</li>
+<li>[KEYCLOAK-7965] - Redundant div end tag in base theme login.ftl</li>
+<li>[KEYCLOAK-7977] - Release failing due the NPE during swagger2markup-maven-plugin execution</li>
+</ul>
+<p><strong>Task</strong></p>
+<ul>
+<li>[KEYCLOAK-7101] - Investigate failing Social Login Tests</li>
+<li>[KEYCLOAK-7269] - [SPIKE] - Investigate how to support resource-less permissions</li>
+<li>[KEYCLOAK-7310] - Add migration test from 3.4.x to 4.x</li>
+<li>[KEYCLOAK-7328] - Test the RH-SSO 7.2.z EAP 7 adapter with early builds of EAP 7.2.0</li>
+<li>[KEYCLOAK-7329] - Test the RH-SSO 7.3.0 EAP 7 adapter with early builds of EAP 7.2.0</li>
+<li>[KEYCLOAK-7400] - Update Camel / Fuse 7 adapter once CAMEL-12514 is merged to Fuse's Camel component</li>
+<li>[KEYCLOAK-7498] - Remove unused components.</li>
+<li>[KEYCLOAK-7599] - Improve handling of test datasets</li>
+<li>[KEYCLOAK-7620] - Generating performance datasets for authorization services</li>
+<li>[KEYCLOAK-7666] - Adapter tests - add dynamically loaded container - remove abstract classes - EAP6-fuse6</li>
+<li>[KEYCLOAK-7817] - Update eap6.version in testsuite</li>
+<li>[KEYCLOAK-7857] - Fix Notifications - Switch to pf-ng notifications</li>
+<li>[KEYCLOAK-7888] - Update Fuse adapter examples/guide to new way of CXF servlet registration</li>
+</ul>
+<h4><strong>Keycloak v4.1.0</strong></h4>
+<p><strong>Enhancement</strong></p>
+<ul>
+<li>[KEYCLOAK-3063] - Check if keycloak-osgi-thirdparty can be removed</li>
+<li>[KEYCLOAK-3370] - Choose Theme by Client</li>
+<li>[KEYCLOAK-4937] - Convert time units in emails into human-friendly format</li>
+<li>[KEYCLOAK-5166] - Setup CI jobs to test RH-SSO quickstarts</li>
+<li>[KEYCLOAK-5578] - The javascript adapter should use native Promises</li>
+<li>[KEYCLOAK-5791] - Add support for multi-valued attributes in ScriptBasedOIDCProtocolMapper</li>
+<li>[KEYCLOAK-5811] - OIDC Client Authentication by JWS Client Assertion in client_secret_jwt</li>
+<li>[KEYCLOAK-5857] - Support for PBKDF2 hashes with different key size</li>
+<li>[KEYCLOAK-5886] - Improvements to Photoz Examples</li>
+<li>[KEYCLOAK-6085] - Allow to customize DB dump download location through a Maven property</li>
+<li>[KEYCLOAK-6222] - Check for script syntax errors on ScriptBasedOIDCProtocolMapper validation</li>
+<li>[KEYCLOAK-6262] - Incorporate new visual design for login pages</li>
+<li>[KEYCLOAK-6298] - SAML adapter script should support offline installation of adapter</li>
+<li>[KEYCLOAK-6299] - Product profile should only include supported JavaDocs</li>
+<li>[KEYCLOAK-6302] - Add support for user defined networks and Docker compose</li>
+<li>[KEYCLOAK-6330] - GitHub social IdP: Use GitHub API for fetching user's private email if no public email is set</li>
+<li>[KEYCLOAK-6335] - Per client authentication flows</li>
+<li>[KEYCLOAK-6336] - Per client authentication flows configuration in admin console</li>
+<li>[KEYCLOAK-6339] - Show SAML IdP-initiated client URI</li>
+<li>[KEYCLOAK-6350] - Refactor SAML parsers</li>
+<li>[KEYCLOAK-6355] - Non-browser multi-request cookieless auth flow support</li>
+<li>[KEYCLOAK-6378] - Clean-up node_modules in themes</li>
+<li>[KEYCLOAK-6493] - [SPIKE] Investigate architecture of new account management console</li>
+<li>[KEYCLOAK-6561] - Add account management and update profile to js-console example</li>
+<li>[KEYCLOAK-6578] - Support other OIDC providers with keycloak.js</li>
+<li>[KEYCLOAK-6589] - Performance issues in Users REST API</li>
+<li>[KEYCLOAK-6618] - Update German Translation</li>
+<li>[KEYCLOAK-6664] - Fix performance testsuite shell scripts to run on macOS</li>
+<li>[KEYCLOAK-6700] - Financial API Read and Write API Security Profile : State hash value (s_hash) to protect state parameter</li>
+<li>[KEYCLOAK-6871] - Make sending a request object mandatory for certain clients</li>
+<li>[KEYCLOAK-4134] - Update paths in adapters when new resources are created on the server</li>
+<li>[KEYCLOAK-5457] - Context accessibility for JS base policies</li>
+<li>[KEYCLOAK-5830] - Automated stress test</li>
+<li>[KEYCLOAK-6448] - Instagram social broker</li>
+<li>[KEYCLOAK-6494] - Address load-time of new account management console</li>
+<li>[KEYCLOAK-6495] - Address number of requests for new account management console</li>
+<li>[KEYCLOAK-6496] - Cleanup and polish current code base for new account management console</li>
+<li>[KEYCLOAK-6699] - Add more recipes to Admin CLI documentation</li>
+<li>[KEYCLOAK-6815] - Use htmlunit browser in adapter tests</li>
+<li>[KEYCLOAK-6838] - Update RH-SSO logo style</li>
+<li>[KEYCLOAK-6857] - [RH-SSO] Remove support for RH-SSO 7.1 from the documentation</li>
+<li>[KEYCLOAK-6992] - Proxy: Configure Request Timeout</li>
+<li>[KEYCLOAK-7033] - Server rendered "Login Success/Failure" for kcinit/KeycloakInstalled browser</li>
+<li>[KEYCLOAK-7044] - kcadm --token support</li>
+<li>[KEYCLOAK-7147] - Support obtaining a buffered input stream in HttpFacade.Request</li>
+<li>[KEYCLOAK-7162] - Expose WWW-Authenticate Header when using CORS</li>
+<li>[KEYCLOAK-7204] - Make sure that sso.redhatkeynote.com route is used just for "sso" project</li>
+<li>[KEYCLOAK-7223] - Increase count of connections at datasource</li>
+<li>[KEYCLOAK-6655] - Javascript Adapter - Allow users to provide cordova-specific options to login and register</li>
+<li>[KEYCLOAK-6656] - Javascript Adapter - Reject 'login' promise when users close their cordova in-app-browser on purpose</li>
+<li>[KEYCLOAK-7274] - Hardcoded config in offline adapter installation scripts</li>
+<li>[KEYCLOAK-7354] - Split ticket management and permission endpoint</li>
+<li>[KEYCLOAK-4828] - LDAP: default groups are not automatically added during user registration</li>
+<li>[KEYCLOAK-6883] - Add "scope" as claim to the access token.</li>
+<li>[KEYCLOAK-7334] - Update vertical nav/Integrate patternfly-ng</li>
+<li>[KEYCLOAK-7356] - Code to Token flow fails if initial redirect_uri contains a session_state parameter</li>
+<li>[KEYCLOAK-7504] - Update Node.js adapter dependencies and deprecate support to Node 4</li>
+<li>[KEYCLOAK-7523] - PathBasedKeycloakConfigResolver uses wrong context path</li>
+<li>[KEYCLOAK-7531] - Javascript Adapter - Typescript definition of login.cordovaOptions</li>
+<li>[KEYCLOAK-7593] - Add setter for httpContext to Fuse 7 adapters' PaxWebIntegrationService</li>
+<li>[KEYCLOAK-7633] - Improve support for DEBUG level logging, including runtime level change</li>
+<li>[KEYCLOAK-7701] - Refactor key providers to support additional algorithms</li>
+<li>[KEYCLOAK-7722] - Move configuration files specific to EAP6 to app-server-eap6 module</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-943] - Account Management REST api</li>
+<li>[KEYCLOAK-1942] - Magic link authenticator prototype</li>
+<li>[KEYCLOAK-3736] - Add display name to clients</li>
+<li>[KEYCLOAK-4547] - Allow deploying themes to deployments dir</li>
+<li>[KEYCLOAK-4721] - Consider Session Language of Realm Also In ReCaptcha</li>
+<li>[KEYCLOAK-4743] - Running keycloak behind web proxy</li>
+<li>[KEYCLOAK-5372] - Add warm-up, test-time, ramp-down times</li>
+<li>[KEYCLOAK-5574] - Add edit this page in Github links to docs</li>
+<li>[KEYCLOAK-6041] - SSSD Federation script to be idempotent</li>
+<li>[KEYCLOAK-6147] - Ability to add nonce attribute to idp request</li>
+<li>[KEYCLOAK-6228] - Client Storage SPI</li>
+<li>[KEYCLOAK-6289] - Add Theme Selector SPI</li>
+<li>[KEYCLOAK-6519] - Theme resource provider</li>
+<li>[KEYCLOAK-4102] - Allow policy enforcer to load paths on demand when no path is provider</li>
+<li>[KEYCLOAK-4538] - Possiblity to allow clock skew between client and server</li>
+<li>[KEYCLOAK-4903] - Pushed Claims</li>
+<li>[KEYCLOAK-5098] - Spring Boot 2 Adapter</li>
+<li>[KEYCLOAK-6305] - Slovak translation</li>
+<li>[KEYCLOAK-6497] - Profile page</li>
+<li>[KEYCLOAK-6498] - Welcome page</li>
+<li>[KEYCLOAK-6499] - Add password update - HTML</li>
+<li>[KEYCLOAK-6500] - Add device activity - HTML</li>
+<li>[KEYCLOAK-6501] - Applications page - wireframe</li>
+<li>[KEYCLOAK-6505] - Authenticator page - wireframe review</li>
+<li>[KEYCLOAK-6622] - admin console support for client storage SPI</li>
+<li>[KEYCLOAK-6798] - Keycloak.js - allow to provide custom adapters</li>
+<li>[KEYCLOAK-6813] - CLI SSO Utility <code>kcinit</code></li>
+<li>[KEYCLOAK-7000] - kcinit whoami</li>
+<li>[KEYCLOAK-7004] - kcinit browser mode</li>
+<li>[KEYCLOAK-7039] - Add support for MariaDB to Docker image</li>
+<li>[KEYCLOAK-7072] - Extended user attributes on Profile Page</li>
+<li>[KEYCLOAK-7196] - Add kc_locale to keycloak.js</li>
+<li>[KEYCLOAK-7197] - Response design for welcome page</li>
+<li>[KEYCLOAK-7090] - Applications page - HTML</li>
+<li>[KEYCLOAK-7148] - Associate sub resources to a parent resource</li>
+<li>[KEYCLOAK-7206] - Search by user id on admin console</li>
+<li>[KEYCLOAK-349] - Scope query parameter support</li>
+<li>[KEYCLOAK-5579] - Change Client Templates to Client Scope</li>
+<li>[KEYCLOAK-6720] - Display promise error massage in GrantManager.prototype.validateToken</li>
+<li>[KEYCLOAK-6771] - Holder of Key mechanism: OAuth 2.0 Certificate Bound Access Tokens</li>
+<li>[KEYCLOAK-7382] - Application Response HTML Update</li>
+<li>[KEYCLOAK-7451] - OAuth Authorization Server Metadata for Proof Key for Code Exchange</li>
+<li>[KEYCLOAK-7500] - Upgrade MySQL driver to 5.1.46</li>
+<li>[KEYCLOAK-6663] - Support OAuth2 installed / native apps using a custom redirect uri</li>
+<li>[KEYCLOAK-7384] - Federated Identity (linked accounts) HTML</li>
+<li>[KEYCLOAK-7641] - Introduce a profile to allow building only server</li>
+<li>[KEYCLOAK-7651] - Docker image support to build Keycloak from source</li>
+<li>[KEYCLOAK-7688] - Offline Session Max for Offline Token</li>
+<li>[KEYCLOAK-7689] - Authenticator - Mobile Setup HTML (including the responsive code)</li>
+<li>[KEYCLOAK-7690] - Authenticator - SMS Code Setup HTML (including the responsive code)</li>
+<li>[KEYCLOAK-7691] - Authenticator - Backup Code Setup HTML (including the responsive code)</li>
+<li>[KEYCLOAK-7705] - Added hardcoded-ldap-group-mapper for user federation</li>
+</ul>
+<h4><strong>Keycloak 3.4</strong></h4>
+<p><strong>Enhancement</strong></p>
+<ul>
+<li>[KEYCLOAK-3303] - Add option to support last two refresh tokens</li>
+<li>[KEYCLOAK-4052] - Use PasswordPolicy for LDAP password updates</li>
+<li>[KEYCLOAK-4803] - Move support for MySQL and PostgreSQL to main Keycloak Docker image</li>
+<li>[KEYCLOAK-4858] - Slow query performance for client with large data volume</li>
+<li>[KEYCLOAK-4928] - Add Primary Key Constraints to all tables of the database</li>
+<li>[KEYCLOAK-5032] - Authorize endpoint, request parameters not transmitted to IDP</li>
+<li>[KEYCLOAK-5165] - Setup CI jobs to test Keycloak quickstarts</li>
+<li>[KEYCLOAK-5186] - create user -&gt; set federationLink if present</li>
+<li>[KEYCLOAK-5298] - Enable autoscaping in Freemarker template</li>
+<li>[KEYCLOAK-5439] - Remove unneeded subsystems/modules from distro</li>
+<li>[KEYCLOAK-5446] - Improve logging of URI mismatch in received vs expected in SAML adapter</li>
+<li>[KEYCLOAK-5510] - Allow import of LDAP groups with missing subgroups</li>
+<li>[KEYCLOAK-5576] - Performance testsuite should allow exporting the dump directly after data generation</li>
+<li>[KEYCLOAK-5577] - Support setting cpu/mem docker limits in performance tests</li>
+<li>[KEYCLOAK-5616] - Processing of claims parameter</li>
+<li>[KEYCLOAK-5624] - Rename import-data profile to generate-data</li>
+<li>[KEYCLOAK-5631] - A lot of 'Unrecognized attribute' warnings in log when WF is configured to run in crossdc</li>
+<li>[KEYCLOAK-5655] - Upgrade FreeMarker</li>
+<li>[KEYCLOAK-5661] - OIDC Financial API Read Only Profile : scope MUST be returned in the response from Token Endpoint</li>
+<li>[KEYCLOAK-5671] - Adding a "policy provider attributes" field to Permission</li>
+<li>[KEYCLOAK-5700] - Add support for jarless server distribution</li>
+<li>[KEYCLOAK-5703] - Improving exception handling and parsing server response</li>
+<li>[KEYCLOAK-5726] - Support define enforcement mode for scopes on the adapter configuration</li>
+<li>[KEYCLOAK-5728] - Allow policy providers to push permission claims</li>
+<li>[KEYCLOAK-5798] - Move keycloak-nodejs-auth-utils and keycloak-nodejs-connect repositories</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-2035] - Add ability to get users in role</li>
+<li>[KEYCLOAK-2671] - Allow additional attributes to be pushed into Freemarker templates (login and account themes)</li>
+<li>[KEYCLOAK-3135] - Support Remote Policy Management</li>
+<li>[KEYCLOAK-3599] - Script based ProtocolMapper for ODIC</li>
+<li>[KEYCLOAK-4169] - Document how to run testsuite</li>
+<li>[KEYCLOAK-4374] - Support SAML 2.0 AttributeValue AnyType</li>
+<li>[KEYCLOAK-4580] - Token exchange service</li>
+<li>[KEYCLOAK-4766] - Add Executor Service SPI</li>
+<li>[KEYCLOAK-4982] - Create a job to release Keycloak quickstarts</li>
+<li>[KEYCLOAK-5244] - Blacklist PasswordCredentialPolicy</li>
+<li>[KEYCLOAK-5448] - Login with PayPal</li>
+<li>[KEYCLOAK-5623] - Integrate Keycloak via Jboss Fuse Fabric Profile resource</li>
+</ul>
+<h4><strong>Keycloak 3.3</strong></h4>
+<p><strong>Enhancement</strong></p>
+<ul>
+<li>[KEYCLOAK-4756] - unversioned keycloak.js cache life too long</li>
+<li>[KEYCLOAK-5067] - Allow refreshable context to have an optional adapter token store</li>
+<li>[KEYCLOAK-5138] - Use build time in resource versions for snapshots</li>
+<li>[KEYCLOAK-5143] - Use auth-server-wildfly on Travis</li>
+<li>[KEYCLOAK-5180] - Add title attribute for keycloak-session-iframe to suppress accessibility errors</li>
+<li>[KEYCLOAK-5190] - Login with BitBucket</li>
+<li>[KEYCLOAK-5194] - Disabling Group and Role Permissions doesn't delete anything</li>
+<li>[KEYCLOAK-5242] - Add means to run test Keycloak server with https</li>
+<li>[KEYCLOAK-5285] - Improve possibility to extend FreeMarkerEmailTemplateProvider</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-3877] - Expose adapter config for public clients through the management interface</li>
+<li>[KEYCLOAK-4253] - Functional tests for quickstarts</li>
+<li>[KEYCLOAK-4439] - WildFly/EAP Management UI SSO</li>
+<li>[KEYCLOAK-4477] - Upgrade server to WildFly 11 Alpha1</li>
+<li>[KEYCLOAK-4663] - Elytron subsystem</li>
+<li>[KEYCLOAK-4900] - Passing login_hint up to Identity Provider</li>
+<li>[KEYCLOAK-5086] - Provide Chinese translation in keycloak themes</li>
+<li>[KEYCLOAK-5203] - Keycloak Proxy Docker image</li>
+<li>[KEYCLOAK-5249] - gitlab.com identity provider</li>
+<li>[KEYCLOAK-5269] - account service unlink REST API doesn't work</li>
+<li>[KEYCLOAK-5291] - token references feature</li>
+<li>[KEYCLOAK-5307] - Provide Dutch translation in keycloak themes</li>
+<li>[KEYCLOAK-5319] - Source maps for keycloak.js</li>
+</ul>
+<h4><strong>Keycloak 3.2.0</strong></h4>
+<p><strong>Enhancement</strong>*</p>
+<ul>
+<li>[KEYCLOAK-3056] - Option to verify signature on SAML assertion in SAML Identity broker</li>
+<li>[KEYCLOAK-3631] - Make user actions tokens independently from -user- +client+ sessions so they can live a long time</li>
+<li>[KEYCLOAK-3988] - Multiple missing indexes on FKs</li>
+<li>[KEYCLOAK-3990] - Too many autoFlush checks by Hibernate and explicit em.flush()</li>
+<li>[KEYCLOAK-4016] - Provide a Link to go Back to The Application on a Timeout</li>
+<li>[KEYCLOAK-4097] - Better session sharing / handling of multiple logins</li>
+<li>[KEYCLOAK-4119] - Allow debugging Keycloak when running tests</li>
+<li>[KEYCLOAK-4497] - Update French Translation</li>
+<li>[KEYCLOAK-4670] - Back/forward/refresh button issues</li>
+<li>[KEYCLOAK-4765] - QueryParamTokenRequestAuthenticator fails when access_token query param is not a valid bearer</li>
+<li>[KEYCLOAK-4770] - Development version of keycloak-connect should depend on GitHub version of auth-utils</li>
+<li>[KEYCLOAK-4814] - disable security via configuration (i.e. for testing) in Spring Boot Adapter</li>
+<li>[KEYCLOAK-4862] - Expose client description in ClientBean</li>
+<li>[KEYCLOAK-4888] - Change default hashing provider for realm</li>
+<li>[KEYCLOAK-4889] - Improve error messages for password policies</li>
+<li>[KEYCLOAK-4929] - Refactor Authz caching and jpa API</li>
+<li>[KEYCLOAK-4933] - Use server-provisioning to create WildFly adapter dist and server overlay</li>
+<li>[KEYCLOAK-4940] - Typo in German email verification body</li>
+<li>[KEYCLOAK-4961] - Group policy</li>
+<li>[KEYCLOAK-5033] - Quickstarts integration tests should be parallelized on Travis CI</li>
+<li>[KEYCLOAK-5051] - Invalidate authz cache when realm cache is cleared</li>
+<li>[KEYCLOAK-5064] - add configuration property option realmPublicKey</li>
+<li>[KEYCLOAK-5069] - Provide a way to add a custom KeycloakConfigResolver instance for initialization</li>
+<li>[KEYCLOAK-5072] - JSPolicyProvider should use ScriptingSPI</li>
+</ul>
+<p><strong>Feature Request</strong></p>
+<ul>
+<li>[KEYCLOAK-3168] - Group-Based Access Control</li>
+<li>[KEYCLOAK-3297] - Add option for setting CORS Access-Control-Expose-Headers header</li>
+<li>[KEYCLOAK-3316] - Remove the IDToken if scope=openid is not used</li>
+<li>[KEYCLOAK-3444] - Fine-grained permissions in admin console and endpoints</li>
+<li>[KEYCLOAK-3592] - Docker Auth V2 Protocol Support</li>
+<li>[KEYCLOAK-4007] - Add integration tests for the nodejs adapter "admin" endpoints</li>
+<li>[KEYCLOAK-4204] - Extend brute force protection with permanent lockout on failed attempts</li>
+<li>[KEYCLOAK-4444] - Allow sending test email</li>
+<li>[KEYCLOAK-4773] - Remove 'providers' directory</li>
+<li>[KEYCLOAK-4815] - Making Proxy address forwarding configurable in Docker container</li>
+<li>[KEYCLOAK-4826] - Docker image for OpenShift</li>
+<li>[KEYCLOAK-4886] - Support creation of multiple OpenShift v3 Identity Providers</li>
+<li>[KEYCLOAK-4951] - Update Spring Boot documentation to reflect usage of the starter</li>
+<li>[KEYCLOAK-4955] - Partial export through admin console</li>
+<li>[KEYCLOAK-4965] - Node.js testsuite occasionally stuck on Travis CI</li>
+<li>[KEYCLOAK-4967] - Setup Travis CI to build development version of the quickstarts</li>
+<li>[KEYCLOAK-4980] - SAML adapter should return 401 when unauthenticated Ajax client accesses</li>
+<li>[KEYCLOAK-5082] - Unable to access webapp which URL being rewritten</li>
+</ul>
+<h4><strong>Keycloak Release 3.1.0-3</strong></h4>
+<p>An update to the govuk themes from v1.1.0 to v1.1.1 (https://github.com/UKHomeOffice/keycloak-theme-govuk)</p>
+<ul>
+<li>this will change the govuk, govuk-internal and social themes</li>
+</ul>
+<p>You can find the Keycloak Release pages <a href="https://issues.jboss.org/projects/KEYCLOAK?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&amp;status=released-unreleased">here</a>. Note a JBOSS Developer login is required (it's free)</p>
+<h4><strong><a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12313920&amp;version=12333194">v3.1.0</a></strong></h4>
+<p><strong>Enhancement:</strong></p>
+<ul>
+<li>[KEYCLOAK-2122] - Config of AssertionConsumerServiceUrl in Saml Adapter</li>
+<li>[KEYCLOAK-4361] - Remove auth-server-standalone from domain.xml</li>
+<li>[KEYCLOAK-4502] - Update Russian translation</li>
+<li>[KEYCLOAK-4528] - Identity Provider for Openshift</li>
+<li>[KEYCLOAK-4602] - Improve path matcher when using handling patterns and caching</li>
+<li>[KEYCLOAK-4614] - Fix tooltip reference for linkOnly field in identity providers section</li>
+<li>[KEYCLOAK-4644] - Have option to not synchronize a linked account on login</li>
+<li>[KEYCLOAK-4652] - PolicyEvaluationService.evaluate() handles Role Policy for composite role incorrectly</li>
+<li>[KEYCLOAK-4664] - linking doesn't update token</li>
+<li>[KEYCLOAK-4665] - Parent IDP not logged out if account was linked during session</li>
+<li>[KEYCLOAK-4671] - Add server-private-spi to dependency deployer</li>
+<li>[KEYCLOAK-4727] - move PolicyEvaluationService into admin client</li>
+<li>[KEYCLOAK-4728] - Update French Translation</li>
+<li>[KEYCLOAK-4729] - Update German Translation</li>
+<li>[KEYCLOAK-4734] - Update Italian Translations</li>
+<li>[KEYCLOAK-4751] - Send default access denied page when requests don't match any path config</li>
+<li>[KEYCLOAK-4762] - Improve French translations</li>
+<li>[KEYCLOAK-4792] - AuthzClient should support credential types other than secret</li>
+</ul>
+<p><strong>Feature Request:</strong></p>
+<ul>
+<li>[KEYCLOAK-2604] - Proof Key for Code Exchange by OAuth Public Clients</li>
+<li>[KEYCLOAK-3468] - Upgrade server to WildFly 10.1.0.Final</li>
+<li>[KEYCLOAK-3573] - Elytron adapters</li>
+<li>[KEYCLOAK-3999] - Add Key Rotation support for Spring Security Adapter</li>
+<li>[KEYCLOAK-4000] - Add Key Rotation support for Spring Boot Adapter</li>
+<li>[KEYCLOAK-4163] - Improve support for e-mail addresses</li>
+<li>[KEYCLOAK-4168] - Add proxy debug endpoint</li>
+<li>[KEYCLOAK-4335] - X509 Certificate user authentication</li>
+<li>[KEYCLOAK-4396] - TypeScript type definitions for keycloak.js</li>
+<li>[KEYCLOAK-4691] - Extract Initial Token Generator to a separate method</li>
+<li>[KEYCLOAK-4697] - [RHSSO] Upgrade to EAP 7.1.0 Alpha16</li>
+<li>[KEYCLOAK-4736] - Extend security defenses with header X-XSS-Protection</li>
+<li>[KEYCLOAK-4804] - Add spring-boot-container-bundle</li>
+</ul>
+<h4><strong><a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12313920&amp;version=12332008">v3.0.0</a></strong></h4>
+<p><strong>Enhancement:</strong></p>
+<ul>
+<li>[KEYCLOAK-3964] - No-import LDAP option</li>
+<li>[KEYCLOAK-3989] - Realm creation/deletion drops all admin composite roles and re-inserts them.</li>
+<li>[KEYCLOAK-4224] - Allow hiding identity providers on login page</li>
+<li>[KEYCLOAK-4362] - Split migration-domain script into two separate scripts</li>
+<li>[KEYCLOAK-4363] - ComponentFactory.onUpdate needs old model too</li>
+<li>[KEYCLOAK-4381] - Merge ModelReadOnlyException with ReadOnlyException</li>
+<li>[KEYCLOAK-4382] - Merge ModelReadOnlyException with ReadOnlyException</li>
+<li>[KEYCLOAK-4385] - Simple KeycloakConfigResolver to easily find keycloak.json inside OSGI bundle</li>
+<li>[KEYCLOAK-4475] - Minor improvements in hawtio integration docs</li>
+<li>[KEYCLOAK-4505] - ScriptBasedAuthenticator should expose clientSession as script binding</li>
+<li>[KEYCLOAK-4515] - Make it possible to clean-up other DB types than mysql or postgres</li>
+<li>[KEYCLOAK-4520] - Enable testsuite logging when running test from IDE</li>
+</ul>
+<p><strong>Feature Request:</strong></p>
+<ul>
+<li>[KEYCLOAK-3621] - Node.js service quickstart</li>
+<li>[KEYCLOAK-3955] - Add module for testing domain dependant tests</li>
+<li>[KEYCLOAK-4008] - Add checksums to file downloads</li>
+<li>[KEYCLOAK-4195] - Keycloak adapter and SPI bom</li>
+<li>[KEYCLOAK-4360] - Add OneTimeUse condition to SAMLResponse</li>
+<li>[KEYCLOAK-4501] - Federated identity management</li>
+<li>[KEYCLOAK-4504] - SAML Broker: Support redirect logout, even when using POST for SAML response</li>
+<li>[KEYCLOAK-4537] - Adapter for Jetty 9.4</li>
+<li>[KEYCLOAK-4565] - Javadocument the adapter properties and add the metadata generator</li>
+<li>[KEYCLOAK-4581] - Swedish translations</li>
+</ul>
+<h4><strong><a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12313920&amp;version=12332009">v2.5.0</a></strong></h4>
+<p><strong>Enhancement:</strong></p>
+<ul>
+<li>[KEYCLOAK-2654] - KC invokes UserInfo Endpoint call against external Identity Provider</li>
+<li>[KEYCLOAK-2962] - OAuthRequestAuthenticator shouldn't redirect on XHR / AJAX requests</li>
+<li>[KEYCLOAK-3124] - Have adapter tests running on embedded undertow during default build</li>
+<li>[KEYCLOAK-3474] - Provide a filter to enable authorizations</li>
+<li>[KEYCLOAK-3678] - [Fuse] Add example using Camel RestDSL</li>
+<li>[KEYCLOAK-3823] - Adapters should clear key caches when not before policy is sent</li>
+<li>[KEYCLOAK-3933] - Remove UserFederationProvidersResource.getUserFederationInstanceWithFallback() once UserFederation SPI is removed</li>
+<li>[KEYCLOAK-3973] - Migration strategy for deprecated custom UserFed</li>
+<li>[KEYCLOAK-3987] - Grant the new role from the saml token if it exist</li>
+<li>[KEYCLOAK-4002] - realmRevisions cache size needs to be configurable</li>
+<li>[KEYCLOAK-4003] - Slow role checks on Infinispan RoleAdapter with composite roles.</li>
+<li>[KEYCLOAK-4004] - Display client name in referrer link instead of id</li>
+<li>[KEYCLOAK-4040] - Unable to import SAML metadata with OrganizationUrl</li>
+<li>[KEYCLOAK-4046] - Setting the 'Credentials - Temporary' flag when creating a new user causes the user to be disabled in MSAD</li>
+<li>[KEYCLOAK-4062] - Provide GUI for KeyName format in identity broker and client</li>
+<li>[KEYCLOAK-4074] - Decoupling of default provider implementations</li>
+</ul>
+<p><strong>Feature Request:</strong></p>
+<ul>
+<li>[KEYCLOAK-912] - Admin CLI</li>
+<li>[KEYCLOAK-3339] - Enable authorization services to EAP6 adapter</li>
+<li>[KEYCLOAK-3479] - Providers in JEE deployment</li>
+<li>[KEYCLOAK-3648] - Support for importing SAML response multi-valued attributes</li>
+<li>[KEYCLOAK-3731] - Support broker initiated SSO</li>
+<li>[KEYCLOAK-3824] - Add expiration to keys cached by clients</li>
+<li>[KEYCLOAK-4005] - Add support for "not before" in the NodeJS adapter</li>
+<li>[KEYCLOAK-4009] - Compatibility with AD LDS</li>
+<li>[KEYCLOAK-4018] - Client-Based Policy</li>
+<li>[KEYCLOAK-4059] - Support for duplicate emails</li>
+<li>[KEYCLOAK-4087] - LDAP group mapping should be possible via uid in memberUid mode</li>
+<li>[KEYCLOAK-4092] - Add key provider for HMAC signatures</li>
+<li>[KEYCLOAK-4109] - Ability to disable impersonation</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

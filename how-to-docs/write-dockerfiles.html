@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Writing Dockerfiles - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Writing Dockerfiles";
+    var mkdocs_page_input_path = "how-to-docs/write-dockerfiles.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Writing Dockerfiles</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="writing-dockerfiles">Writing Dockerfiles<a class="headerlink" href="#writing-dockerfiles" title="Permanent link">#</a></h1>
+<h3 id="dockerfile-best-practice">Dockerfile best practice<a class="headerlink" href="#dockerfile-best-practice" title="Permanent link">#</a></h3>
+<p>We recommend using dockers excellent guidance for this!<br />
+https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/</p>
+<h3 id="docker-images-to-build-from">Docker images to build from<a class="headerlink" href="#docker-images-to-build-from" title="Permanent link">#</a></h3>
+<p>This document lists all of our docker base images that you can build from:</p>
+<h3 id="technology-specific-images">Technology specific images<a class="headerlink" href="#technology-specific-images" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/UKHomeOffice/docker-nodejs">NodeJS onbuild image - recommended by default</a></li>
+<li><a href="https://github.com/UKHomeOffice/docker-nodejs-base">NodeJS base image - if you need more flexibility</a></li>
+<li><a href="https://github.com/UKHomeOffice/docker-scala-sbt">Scala image</a></li>
+<li><a href="https://github.com/UKHomeOffice/docker-openjdk8">JDK image</a></li>
+<li><a href="https://github.com/UKHomeOffice/docker-java8-mvn">Maven image with Java 8</a></li>
+<li><a href="https://github.com/UKHomeOffice/docker-ruby">Ruby image</a></li>
+</ul>
+<h3 id="home-office-centos-base-image">Home Office CentOS base image<a class="headerlink" href="#home-office-centos-base-image" title="Permanent link">#</a></h3>
+<p>If none of the technology specific images work for you you can either build on top of them or build from the base centos image:<br />
+https://github.com/UKHomeOffice/docker-centos-base</p>
+<p>If you build an image that will be of use to other teams then please add it to the list of technology specific images above! And please make sure it adheres to the below guidance on building new base images.</p>
+<h3 id="guidance-on-building-new-base-images">Guidance on building new base images<a class="headerlink" href="#guidance-on-building-new-base-images" title="Permanent link">#</a></h3>
+<p>All base images should be built with a set of onbuild commands in them to make sure anything built on top of them will automatically update the base OS, for example:</p>
+<pre><code>yum install -y curl &amp;&amp; yum clean all &amp;&amp; rpm --rebuilddb
+</code></pre>
+
+<p>The <a href="https://github.com/UKHomeOffice/docker-nodejs-base/blob/master/Dockerfile">nodejs base image</a> is a good example of this.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

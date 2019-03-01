@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>DMS Migration - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DMS Migration";
+    var mkdocs_page_input_path = "how-to-docs/dms-migration.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>DMS Migration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="dms-migration">DMS Migration<a class="headerlink" href="#dms-migration" title="Permanent link">#</a></h1>
+<h3 id="prerequisite"><strong>Prerequisite</strong><a class="headerlink" href="#prerequisite" title="Permanent link">#</a></h3>
+<p>The following need to be true before you follow this guide:
+<em> AWS console logon
+</em> Access to the DMS service from console
+* A region where STS has been activated</p>
+<h3 id="dms-setup"><strong>DMS Setup</strong><a class="headerlink" href="#dms-setup" title="Permanent link">#</a></h3>
+<p>Login to the AWS console using your auth, switch to a role with the correct access policies and verify you're in the right region. Next, select DMS from the services on the main dashboard to access the data migration home screen. Under the "Get started" section click on the "create migration" button then next to the Replication instance. You should see the following screen:</p>
+<p><img alt="Alt text" src="pics/dms-doc-1.png?raw=true" /></p>
+<p>The following are the options and example answers for the replication instance:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Example answer</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>dev-team-dms</td>
+<td>A name for the replication image. This name should be unique.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>DMS instance for migration</td>
+<td>Brief description of the instance</td>
+</tr>
+<tr>
+<td>Instance class</td>
+<td>dms.t2.medium</td>
+<td>The class of replication resource with the configuration you need for your migration.</td>
+</tr>
+<tr>
+<td>VPC</td>
+<td>vpc-*</td>
+<td>The virtual private cloud resource where you wish to add your dms instance. This should be as close to both the source and target instance as possible.</td>
+</tr>
+<tr>
+<td>Multi-AZ</td>
+<td>No</td>
+<td>Optional parameter to create a standby replica of your replication instance in another Availability Zone. Used for failover.</td>
+</tr>
+<tr>
+<td>Publicly Accessible</td>
+<td>False</td>
+<td>Option to access your instance from the internet</td>
+</tr>
+</tbody>
+</table>
+<p>You won't need to set any of the advanced settings. To create the instance click on the next button. You should now see a screen like this:</p>
+<p><img alt="Alt text" src="pics/dms-doc-2.png?raw=true" /></p>
+<p>The following are the options and example answers for the endpoints instances:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Example answer</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint identifer</td>
+<td>database-source/target</td>
+<td>This is the name you use to identify the endpoint.</td>
+</tr>
+<tr>
+<td>Source/target engine</td>
+<td>postgres</td>
+<td>Choose the type of database engine that for this endpoint.</td>
+</tr>
+<tr>
+<td>Server name</td>
+<td>mysqlsrvinst.abcd123456789.us-west-1.rds.amazonaws.com</td>
+<td>Type of server name. For an on-premises database, this can be the IP address or the public hostname. For an Amazon RDS DB instance, this can be the endpoint for the DB instance.</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>5432</td>
+<td>The port used by the database.</td>
+</tr>
+<tr>
+<td>SSL mode</td>
+<td>None</td>
+<td>SSL mode for encryption for your endpoints.</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>root</td>
+<td>The user name with the permissions required to allow data migration.</td>
+</tr>
+<tr>
+<td>Password</td>
+<td><strong><em>*</em></strong>*</td>
+<td>The password for the account with the required permissions.</td>
+</tr>
+<tr>
+<td>Database Name (target)</td>
+<td>dev-db</td>
+<td>The name of the attached database to the selected endpoint.</td>
+</tr>
+</tbody>
+</table>
+<p>Repeat these options for both source and target and make sure to test connection before clicking next. You might need to append security group rules to allow the replication instance access, for example:</p>
+<p>Replication instance has internal ip address 10.20.0.0 and the RDS is on port 5432 and uses TCP. Append rule</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Procol</th>
+<th>Port Range</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom TCP rule</td>
+<td>TCP</td>
+<td>5432</td>
+<td>Custom 10.20.0.0/32</td>
+</tr>
+</tbody>
+</table>
+<p>Once this has fully been setup click next and you should be able to view the tasks page:</p>
+<p><img alt="Alt text" src="pics/dms-doc-3.png?raw=true" />
+<img alt="Alt text" src="pics/dms-doc-4.png?raw=true" /></p>
+<p>The following are the options and example answers for these tasks:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Example answer</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task name</td>
+<td>Migration-task</td>
+<td>A name for the task.</td>
+</tr>
+<tr>
+<td>Task Description</td>
+<td>Task for migrating</td>
+<td>A description for the task.</td>
+</tr>
+<tr>
+<td>Source endpoint</td>
+<td>source-instance</td>
+<td>The source endpoint for migration.</td>
+</tr>
+<tr>
+<td>Target endpoint</td>
+<td>target-instance</td>
+<td>The target endpoint for migration.</td>
+</tr>
+<tr>
+<td>Replication instance</td>
+<td>replication-instance</td>
+<td>The replication instance to be used.</td>
+</tr>
+<tr>
+<td>Migration type</td>
+<td>Migrate existing data</td>
+<td>Migration method you want to use.</td>
+</tr>
+<tr>
+<td>Start task on create</td>
+<td>True</td>
+<td>When selected the task begins as soon as it is created.</td>
+</tr>
+<tr>
+<td>Target table preparation</td>
+<td>Drop table on target</td>
+<td>Migration strategy on target.</td>
+</tr>
+<tr>
+<td>Include LOB columns in replication</td>
+<td>Limited LOB mode</td>
+<td>Migration of large objects on target.</td>
+</tr>
+<tr>
+<td>Max LOB size</td>
+<td>32 kb</td>
+<td>Maximum size of large objects.</td>
+</tr>
+<tr>
+<td>Enable logging</td>
+<td>False</td>
+<td>When selected migration events are logged.</td>
+</tr>
+</tbody>
+</table>
+<p>After completion the job will automatically run if "start task on create" has been selected. If not, the job can be started in the tasks section by selecting it and clicking on the "Start/Resume" button.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>New User Guide - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "New User Guide";
+    var mkdocs_page_input_path = "newuser.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="how-to-docs/index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="newuser.html">New User Guide</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#new-users">New Users</a></li>
+    
+
+    <li class="toctree-l2"><a href="#flow-for-new-users">Flow for new users</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#office-365-account">Office 365 Account</a></li>
+        
+            <li><a class="toctree-l3" href="#vpn">VPN</a></li>
+        
+            <li><a class="toctree-l3" href="#platform-hub">Platform Hub</a></li>
+        
+            <li><a class="toctree-l3" href="#internally-accessible">Internally Accessible</a></li>
+        
+            <li><a class="toctree-l3" href="#aws-resources-s3-buckets-and-rds-instances">AWS Resources (S3 Buckets and RDS Instances)</a></li>
+        
+            <li><a class="toctree-l3" href="#externally-accessible-for-open-source-projects">Externally Accessible (for open source projects)</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>New User Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="new-users">New Users<a class="headerlink" href="#new-users" title="Permanent link">#</a></h1>
+<h1 id="flow-for-new-users">Flow for new users<a class="headerlink" href="#flow-for-new-users" title="Permanent link">#</a></h1>
+<p>This document will go over the flow for getting access to our various services if you are finding difficulties with the specifics of the tasks outlined in this document please see the more detailed <a href="https://github.com/UKHomeOffice/application-container-platform/blob/master/developer-docs/README.md">Developer Docs</a>.</p>
+<h2 id="office-365-account">Office 365 Account<a class="headerlink" href="#office-365-account" title="Permanent link">#</a></h2>
+<p>Licensed <a href="https://portal.office.com">Office 365</a> accounts should be requested from your Programme Management Office. We can request AD-only accounts to facilitate access to ACP services via Single Sign On as explained on the <a href="https://github.com/UKHomeOffice/application-container-platform/blob/master/sla.md">Support page</a>
+Please note that to use SSO, which is using your Office 365 account to log onto other services, pop-ups will need to be enabled on your computer.</p>
+<h2 id="vpn">VPN<a class="headerlink" href="#vpn" title="Permanent link">#</a></h2>
+<p>VPN profiles are used to be able to get through to our multiple AWS environments as well as other data centers. The profiles can be downloaded from <a href="https://access-acp.digital.homeoffice.gov.uk">access</a> which you can access using your Office 365 SSO. The following services can be only accessed when connected to the ACP Platform VPN profile.</p>
+<h2 id="platform-hub">Platform Hub<a class="headerlink" href="#platform-hub" title="Permanent link">#</a></h2>
+<p><a href="https://hub.acp.homeoffice.gov.uk">The Platform Hub</a> serves as a central portal for users of ACP. It acts as an all-in-one place to find information, requests and also support for the platform. The Hub also provides tools to develop, build, deploy and manage all your projects.</p>
+<h2 id="internally-accessible">Internally Accessible<a class="headerlink" href="#internally-accessible" title="Permanent link">#</a></h2>
+<h3 id="artifactory">Artifactory<a class="headerlink" href="#artifactory" title="Permanent link">#</a></h3>
+<p><a href="https://artifactory.digital.homeoffice.gov.uk.">Artifactory</a> - Once you have an Office 365 account, you can sign in using the HOD SSO button. Requests for an Artifactory robot can be made on the <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/artifactory-bot">Platform Hub</a>. The docker repository in Artifactory is accessed via the <code>docker.digital.homeoffice.gov.uk</code> address.</p>
+<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">#</a></h3>
+<p><a href="https://gitlab.digital.homeoffice.gov.uk">GitLab</a> - Once you have an Office 365 account, you can sign in using the Office 365 button.</p>
+<h3 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">#</a></h3>
+<p>You will need a Kubernetes user token before you can access any of the namespaces in the clusters. Follow the instructions here to get one for your teams namespaces: <a href="https://github.com/UKHomeOffice/application-container-platform/blob/master/how-to-docs/kubernetes-user-token.md">Getting a Kubernetes Token for the UK cluster</a></p>
+<h3 id="drone">Drone<a class="headerlink" href="#drone" title="Permanent link">#</a></h3>
+<p>We have two instances; One for <a href="https://drone.acp.homeoffice.gov.uk">GitHub</a> and one for <a href="https://drone-gitlab.acp.homeoffice.gov.uk">GitLab</a>.</p>
+<h3 id="kibana">Kibana<a class="headerlink" href="#kibana" title="Permanent link">#</a></h3>
+<p><a href="https://kibana.acp.homeoffice.gov.uk">Kibana</a> is accessible to ACP users via the default VPN profile.</p>
+<h3 id="sysdig">Sysdig<a class="headerlink" href="#sysdig" title="Permanent link">#</a></h3>
+<p><a href="https://sysdig.digital.homeoffice.gov.uk">Sysdig</a> is also accessible to ACP users via the default VPN profile and requests for specific team views can be made on the <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/sysdig-account">Platform Hub</a>.</p>
+<h2 id="aws-resources-s3-buckets-and-rds-instances">AWS Resources (S3 Buckets and RDS Instances)<a class="headerlink" href="#aws-resources-s3-buckets-and-rds-instances" title="Permanent link">#</a></h2>
+<p>If you require an S3 bucket or an RDS instance you can submit a support request on the <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/overview">Platform Hub</a>.</p>
+<h2 id="externally-accessible-for-open-source-projects">Externally Accessible (for open source projects)<a class="headerlink" href="#externally-accessible-for-open-source-projects" title="Permanent link">#</a></h2>
+<p>The following services can be access without a VPN connection and with personal accounts.</p>
+<h3 id="github">GitHub<a class="headerlink" href="#github" title="Permanent link">#</a></h3>
+<p><a href="https://github.com/UKHomeOffice">Github</a> - To access our repositories you must have your personal Github invited to the UK Home Office organisation on Github. This is done during your first login to the Platform Hub. Please note that you will have to have your full name on your Github profile along with 2 Factor Authentication. If you don't have a personal account on Github, then you will need to create one.</p>
+<h3 id="quay">Quay<a class="headerlink" href="#quay" title="Permanent link">#</a></h3>
+<p><a href="https://quay.io">Quay</a> - You can access Quay using your GitHub account. Once you have been added to the ukhomeoffice organisation on Quay, you can create repositories in the organisation. If you are not already part of the organisation you can submit a <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/quay-add-to-org">support request on the Platform Hub to be added</a>. You will also need a robot created for you to push to your repository once you have created one. Requests for a Quay robot can be made on the <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/quay-robot-request">Platform Hub</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rbac.html" class="btn btn-neutral float-right" title="RBAC Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="developer-docs/index.html" class="btn btn-neutral" title="Developer Getting Started Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="developer-docs/index.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="rbac.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>

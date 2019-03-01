@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Using artifactory as a private npm registry - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Using artifactory as a private npm registry";
+    var mkdocs_page_input_path = "how-to-docs/private-npm-registry.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Using artifactory as a private npm registry</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="using-artifactory-as-a-private-npm-registry">Using artifactory as a private npm registry<a class="headerlink" href="#using-artifactory-as-a-private-npm-registry" title="Permanent link">#</a></h1>
+<p>A step-by-step guide.</p>
+<p>This guide makes the following assumptions:</p>
+<ul>
+<li>you have drone ci set up for your project already</li>
+<li>you are using <code>node@8</code> and <code>npm@5</code> or later</li>
+<li>you are connected to ACP VPN</li>
+</ul>
+<h2 id="setting-up-a-local-environment">Setting up a local environment<a class="headerlink" href="#setting-up-a-local-environment" title="Permanent link">#</a></h2>
+<h3 id="get-your-username-and-api-key-from-artifactory">Get your username and API key from artifactory<a class="headerlink" href="#get-your-username-and-api-key-from-artifactory" title="Permanent link">#</a></h3>
+<p>Visit https://artifactory.digital.homeoffice.gov.uk/artifactory/webapp/#/profile, make a note of your username, and if you don't already have an API key then generate one.</p>
+<h3 id="base64-encode-your-api-key">base64 encode your API key<a class="headerlink" href="#base64-encode-your-api-key" title="Permanent link">#</a></h3>
+<pre><code>echo -n &lt;api key&gt; | base64
+</code></pre>
+
+<h3 id="set-local-environment-variables">Set local environment variables<a class="headerlink" href="#set-local-environment-variables" title="Permanent link">#</a></h3>
+<p>Copy your encoded password, and set the following environment variables in your bash profile:</p>
+<pre><code>export NPM_AUTH_USERNAME=&lt;username&gt;
+export NPM_AUTH_TOKEN=&lt;base64 encoded api key&gt;
+</code></pre>
+
+<p>You might then need to <code>source</code> your profile to load these environment variables.</p>
+<h2 id="setting-up-ci-in-drone">Setting up CI in drone<a class="headerlink" href="#setting-up-ci-in-drone" title="Permanent link">#</a></h2>
+<h3 id="request-a-bot-token-for-artifactory">Request a bot token for artifactory<a class="headerlink" href="#request-a-bot-token-for-artifactory" title="Permanent link">#</a></h3>
+<p>You can do this through the <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/artifactory-bot">ACP Hub</a>. You'll need to provide a username for the bot when you create it.</p>
+<p>One of the ACP team will create a token and send it to you as an encrypted gpg file via email.</p>
+<p>Decrypt the token</p>
+<pre><code>gpg --decrypt ./path/to/file.gpg
+</code></pre>
+
+<h3 id="add-the-token-to-drone-as-a-secret">Add the token to drone as a secret<a class="headerlink" href="#add-the-token-to-drone-as-a-secret" title="Permanent link">#</a></h3>
+<p>First, base64 encode the token:</p>
+<pre><code>echo -n &quot;&lt;token&gt;&quot; | base64
+</code></pre>
+
+<p>Then add this token to drone as a secret:</p>
+<pre><code>drone secret add UKHomeOffice/&lt;repo&gt; NPM_AUTH_TOKEN &lt;base64-encoded-token&gt; --event pull_request
+</code></pre>
+
+<p>Note: you will need to make the secret available to pull request builds to be able to run npm commands in pull request steps</p>
+<h3 id="expose-secret-to-build-steps">Expose secret to build steps<a class="headerlink" href="#expose-secret-to-build-steps" title="Permanent link">#</a></h3>
+<p>You will need to configure any steps which use npm to be able to access the secret. Do this by adding a <code>secret</code> property to those steps as follows:</p>
+<pre><code class="yaml">  my_step:
+    image: node:8
+    secrets:
+      - npm_auth_token
+    commands:
+      - npm install
+      - npm test
+</code></pre>
+
+<h3 id="expose-username-to-build-steps">Expose username to build steps<a class="headerlink" href="#expose-username-to-build-steps" title="Permanent link">#</a></h3>
+<p>In addition, you will need to add the username (as you provided when creating your token) as an environment variable. The easiest way to do this is as a "matrix" variable, which makes the username available to all steps without needing to configure them all individually.</p>
+<pre><code class="yaml">matrix:
+  NPM_AUTH_USERNAME:
+    - &lt;username&gt;
+</code></pre>
+
+<h2 id="publishing-modules-to-artifactory">Publishing modules to artifactory<a class="headerlink" href="#publishing-modules-to-artifactory" title="Permanent link">#</a></h2>
+<p>It is generally recommended to use a common namespace to publish your modules under. npm allows namespace specific configuration, which makes it easier to ensure that modules are always installed from artifactory, and will not accidentally try to install a public module with the same name.</p>
+<h3 id="setting-publish-registry">Setting publish registry<a class="headerlink" href="#setting-publish-registry" title="Permanent link">#</a></h3>
+<p>Add <code>publishConfig</code> to package.json. This ensures that the module can only ever be published to the private registry, and misconfiguration won't accidentally make it public</p>
+<pre><code class="json">&quot;publishConfig&quot;: {
+  &quot;registry&quot;: &quot;https://artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/&quot;
+}
+</code></pre>
+
+<h3 id="add-auth-settings">Add auth settings<a class="headerlink" href="#add-auth-settings" title="Permanent link">#</a></h3>
+<p>In your project's <code>.npmrc</code> file (create one if it does not already exist) add the following lines:</p>
+<pre><code>//artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/:username=${NPM_AUTH_USERNAME}
+//artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/:_password=${NPM_AUTH_TOKEN}
+//artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/:email=test@example.com
+</code></pre>
+
+<p>The email address can be anything, it just needs to be set.</p>
+<h3 id="add-publish-step-to-drone">Add publish step to drone<a class="headerlink" href="#add-publish-step-to-drone" title="Permanent link">#</a></h3>
+<p>Add the following step to your <code>.drone.yml</code> file to publish a new version whenever you release a tag.</p>
+<pre><code class="yaml">  publish:
+    image: node:8
+    secrets:
+      - npm_auth_token
+    commands:
+      - npm publish
+    when:
+      event: tag
+</code></pre>
+
+<p>Now, when you push new tags to github then drone should publish them to the artifactory npm registry automatically.</p>
+<h2 id="using-modules-from-artifactory-as-dependencies">Using modules from artifactory as dependencies<a class="headerlink" href="#using-modules-from-artifactory-as-dependencies" title="Permanent link">#</a></h2>
+<h3 id="configure-your-project-to-use-artifactory">Configure your project to use artifactory<a class="headerlink" href="#configure-your-project-to-use-artifactory" title="Permanent link">#</a></h3>
+<p>In the project which is has private modules as dependencies, add the following line to <code>.npmrc</code> in the root of the project (create this file if it does not exist).</p>
+<pre><code>@&lt;namespace&gt;:registry = https://artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/
+</code></pre>
+
+<p>This will ensure that any module under that namespace will only ever install from artifactory, and never from the public registry</p>
+<p>If using multiple namespaces then add a line for each namespace.</p>
+<p>If the modules you are installing are not namespaced in artifactory, you can add the line with the namespace removed (i.e. <code>registry = ...</code>) but this will have a negative impact on install speed.</p>
+<p>You should then add the following line to your project's <code>.npmrc</code> if they are not already there:</p>
+<pre><code>//artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/:username=${NPM_AUTH_USERNAME}
+//artifactory.digital.homeoffice.gov.uk/artifactory/api/npm/npm-virtual/:_password=${NPM_AUTH_TOKEN}
+</code></pre>
+
+<p>You should now be able to install modules from artifactory into your local development environment.</p>
+<h2 id="installing-dependencies-in-docker">Installing dependencies in docker<a class="headerlink" href="#installing-dependencies-in-docker" title="Permanent link">#</a></h2>
+<p>If you build a docker image as part of your CI pipeline, you will need to copy the <code>.npmrc</code> file into your image before installing there.</p>
+<p>Example <code>Dockerfile</code>:</p>
+<pre><code>FROM quay.io/ukhomeofficedigital/nodejs-base:v8
+
+ARG NPM_AUTH_USERNAME
+ARG NPM_AUTH_TOKEN
+
+COPY .npmrc /app/.npmrc
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
+RUN npm install --production --no-optional
+COPY . /app
+
+USER nodejs
+
+CMD node index.js
+</code></pre>
+
+<p>When building the image, you will then need to pass the username and token variables into docker with the <code>--build-arg</code> flag.</p>
+<pre><code>docker build --build-arg NPM_AUTH_USERNAME=$${NPM_AUTH_USERNAME} --build-arg NPM_AUTH_TOKEN=$${NPM_AUTH_TOKEN} .
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

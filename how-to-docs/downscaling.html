@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Downscaling Services Out Of Hours - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Downscaling Services Out Of Hours";
+    var mkdocs_page_input_path = "how-to-docs/downscaling.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Downscaling Services Out Of Hours</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="downscaling-services-out-of-hours">Downscaling Services Out Of Hours<a class="headerlink" href="#downscaling-services-out-of-hours" title="Permanent link">#</a></h1>
+<p>In an effort to reduce costs on running the platform, we've enabled to capability to scale down specific resources Out Of Hours (OOH) for Non-Production environments.</p>
+<h3 id="aws-rds-relational-database-service">AWS RDS (Relational Database Service)<a class="headerlink" href="#aws-rds-relational-database-service" title="Permanent link">#</a></h3>
+<p>Non-Production RDS resources can be transitioned to a stopped state OOH to save on resource utilisation costs. This is currently managed with the use of tags on the RDS instance defining a cronjob schedule to stop and start the instance.</p>
+<p>To set a schedule for your RDS instances, please use the related Platform Hub support request template titled <strong><a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/rds-scheduling">"Shutdown RDS Instance(s) Out Of Hours"</a></strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Shutting down an RDS instance will have cost savings based on the instance size, however you will still be charged for the allocated storage.</p>
+</blockquote>
+<h3 id="kubernetes-pods">Kubernetes Pods<a class="headerlink" href="#kubernetes-pods" title="Permanent link">#</a></h3>
+<p>Automatically scale down Kubernetes Deployments &amp; Statefulsets to 0 replicas during non-working hours for Non-Production or Production Environments.</p>
+<p>Downscaling for Deployments &amp; Statefulsets are managed by an annotation set within the manifest, and are processed every 30 seconds for changes, by a service running within the Kubernetes Clusters.</p>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h3>
+<p>Set <strong>ONE</strong> of the following annotations on your Deployment / Statefulset:
+- <code>downscaler/uptime</code>: A time schedule in which the Deployment should be scaled up
+- <code>downscaler/downtime</code>: A time schedule in which the Deployment should be scaled down to 0 replicas</p>
+<p>The annotation values for the timeframe must have the following format to be processed correctly: <code>&lt;WEEKDAY-FROM&gt;-&lt;WEEKDAY-TO-INCLUSIVE&gt; &lt;HH&gt;:&lt;MM&gt;-&lt;HH&gt;:&lt;MM&gt; &lt;TIMEZONE&gt;</code></p>
+<p>For example, to schedule a Deployment to only run on weekdays during working hours, the following annotation would be set: <code>downscaler/uptime: Mon-Fri 09:00-17:30 Europe/London</code></p>
+<blockquote>
+<p><strong>Note:</strong> When the deployment is downscaled, an additional annotation <code>downscaler/original-replicas</code> is automatically set to retain a history of the desired replicas prior to the downscale action. If this annotation has been deleted before the service is automatically scaled back up, the downscaler service will not know what to set the replicas back to, and so it won't attempt to scale up the resource.</p>
+</blockquote>
+<p><strong>Example Spec:</strong></p>
+<pre><code class="yml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    downscaler/uptime: Mon-Fri 09:00-17:30 Europe/London
+  labels:
+    name: example-app
+  name: example-app
+  namespace: acp-example
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        image: docker.digital.homeoffice.gov.uk/acp-example-app:v0.0.1@sha256:07397c41ac25c4b19e0485006849201f04168703f0016fad75b8ba5d9885d6d4
+...
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

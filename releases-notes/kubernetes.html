@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Kubernetes Platform - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Kubernetes Platform";
+    var mkdocs_page_input_path = "releases-notes/kubernetes.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../how-to-docs/index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Kubernetes Platform</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="kubernetes-platform">Kubernetes Platform<a class="headerlink" href="#kubernetes-platform" title="Permanent link">#</a></h1>
+<h4>v0.2.19</h4>
+<ul>
+<li>Added Kubernetes conformance tests, extended the integration tests and use spot instances for E2E runs</li>
+<li>Calculate and set systemReserved &amp; kubeReserved kubelet flags, based on instance type per IG</li>
+<li>Mount encrypted docker volume for Master &amp; Compute Nodes</li>
+<li>Update default instance types for IGs</li>
+<li>Update CoreOS to stable release v1967.3.0 (including CVE fixes)</li>
+</ul>
+<h4>v0.2.18</h4>
+<ul>
+<li>Upgrading to kops v0.2.7 due to an issue with the rbac kubelet-api manifest</li>
+</ul>
+<h4>v0.2.17</h4>
+<ul>
+<li>Updated to the latest custom kops release v0.2.6</li>
+<li>Added the fix for the kubelet webhook authorization</li>
+<li>Added kubelet webhook authorization to the kubelet for granular perms</li>
+</ul>
+<h4>v0.2.16</h4>
+<ul>
+<li>Updates to the Kubernetes APIServer Audit Policy</li>
+</ul>
+<h4>v0.2.15</h4>
+<ul>
+<li>Updated CoreOS release to v1911.4.0</li>
+<li>Reduced verbosity of api audit logs</li>
+<li>Increased default value for master nodes root volumes</li>
+</ul>
+<h4>v0.2.14</h4>
+<ul>
+<li>Refined the kubelet pod eviction policies</li>
+</ul>
+<h4>v0.2.13</h4>
+<ul>
+<li>Updated the kubelet pod eviction policies</li>
+</ul>
+<h4>v0.2.12</h4>
+<ul>
+<li>Updated to kubernetes v1.12.3</li>
+</ul>
+<h4>v0.2.11</h4>
+<ul>
+<li>Updating to kubernetes v1.12.1 <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/96">#PR96</a></li>
+<li>Changing to the recommended ipvs mode for the kube-proxy. <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/98">#PR98</a></li>
+<li>Added a sample psp and cluster role / binding to ease ephermal testing. <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/96">#PR96</a></li>
+<li>Update the CoreOS version to 1855.4.0 <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/99">#PR99</a></li>
+<li>Updating to Canel v3.2.3 <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/101">#PR101</a></li>
+</ul>
+<h4>v0.2.10</h4>
+<ul>
+<li>Updating the fixed version of kops</li>
+<li>Added the token controller for bootstrap cleanup</li>
+</ul>
+<h4>v0.2.9</h4>
+<ul>
+<li>Added the node authorizer to the mix <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/87">#PR87</a></li>
+<li>Fixed the s3 bucket bug <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/92">#PR92</a></li>
+<li>Fixed up the image to use the fixed node authorizer image <a href="https://gitlab.digital.homeoffice.gov.uk/acp/kops-acp/merge_requests/93">#PR93</a></li>
+</ul>
+<h4>v0.2.8</h4>
+<ul>
+<li>Fixed the iptables restore created by the previous release</li>
+</ul>
+<h4>v0.2.7</h4>
+<ul>
+<li>Allowing the blocking off vpc ssh to be optional, defaulting to true and mainly as an exception for acp-vpn</li>
+</ul>
+<h4>v0.2.6</h4>
+<ul>
+<li>Fixed the E2E tests. This was broken due to PSP policies which was blocking the kuberang test from running.</li>
+</ul>
+<h4>v0.2.5</h4>
+<ul>
+<li>Use AWS TimeSync service</li>
+</ul>
+<h4>v0.2.4</h4>
+<ul>
+<li>Updating the base image to alpine 3.7</li>
+</ul>
+<h4>v0.2.3</h4>
+<ul>
+<li>(kops release) Bumped to <code>custom-v0.1.3</code>, including a minor fix to the api-server AdmissionController flag use in k8s v1.1</li>
+</ul>
+<h4>v0.2.3 (ACP Build)</h4>
+<ul>
+<li>Kubernetes v1.10.3: https://github.com/kubernetes/kubernetes/releases/tag/v1.10.3</li>
+</ul>
+<h4>v0.2.0 (ACP Build)</h4>
+<ul>
+<li>Kubernetes v1.10.1: https://github.com/kubernetes/kubernetes/releases/tag/v1.10.1</li>
+<li>CoreOS v1688.5.3: https://github.com/coreos/manifest/releases/tag/v1688.5.3</li>
+<li>Etcd v3.3.3: https://github.com/coreos/etcd/blob/master/CHANGELOG-3.3.md#v333-2018-03-29</li>
+</ul>
+<h4>v0.1.0 (ACP Build)</h4>
+<ul>
+<li>Kubernetes v1.8.4: https://github.com/kubernetes/kubernetes/releases/tag/v1.8.4</li>
+<li>CoreOS v1632.2.1: https://github.com/coreos/manifest/releases/tag/v1632.2.1</li>
+<li>Etcd v3.3.1: https://github.com/coreos/etcd/blob/master/CHANGELOG-3.3.md#v331-2018-02-12</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

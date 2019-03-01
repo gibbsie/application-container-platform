@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Debug Issues with your deployments - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Debug Issues with your deployments";
+    var mkdocs_page_input_path = "how-to-docs/debug-issues.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Debug Issues with your deployments</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="debug-issues-with-your-deployments">Debug Issues with your deployments<a class="headerlink" href="#debug-issues-with-your-deployments" title="Permanent link">#</a></h1>
+<h3 id="debug-with-secrets">Debug with secrets<a class="headerlink" href="#debug-with-secrets" title="Permanent link">#</a></h3>
+<p>Sometimes your app doesn't want to talk to an API or a DB and you've stored the credentials or just the details of that in secret.</p>
+<p>The following approaches can be used to validate that your secret is set correctly</p>
+<pre><code class="bash">$ kubectl exec -ti my-pod -c my-container -- mysql -h\$DBHOST -u\$DBUSER -p\$DBPASS
+## or
+$ kubectl exec -ti my-pod -c my-container -- openssl verify /secrets/certificate.pem
+## or
+$ kubectl exec -ti my-pod -c my-container bash
+## and you'll naturally have all the environment variables set and volumes mounted.
+## however we recommend against outputing them to the console e.g. echo $DBHOST
+## instead if you want to assert a variable is set correctly use
+$ [[ -z $DBHOST ]]; echo $?
+## if it returns 1 then the variable is set.
+</code></pre>
+
+<h3 id="debugging-issues-with-your-deployments-to-the-platform">Debugging issues with your deployments to the platform<a class="headerlink" href="#debugging-issues-with-your-deployments-to-the-platform" title="Permanent link">#</a></h3>
+<p>If you get to the end of the above guide but can't access your application there are a number of places something could be going wrong.
+This section of the guide aims to give you some basic starting points for how to debug your application.</p>
+<h3 id="debugging-deployments">Debugging deployments<a class="headerlink" href="#debugging-deployments" title="Permanent link">#</a></h3>
+<p>We suggest the following steps:</p>
+<h4>1. Check your deployment, replicaset and pods created properly</h4>
+<pre><code class="bash">$ kubectl get deployments
+$ kubectl get rs
+$ kubectl get pods
+</code></pre>
+
+<h4>2. Investigate potential issues with your pods (this is most likely)</h4>
+<p>If the get pods command shows that your pods aren't all running then this is likely where the issue is. You can then try curling your application to see if it is alive and responding as expected. e.g.</p>
+<pre><code class="bash">$ curl localhost:4000
+</code></pre>
+
+<p>You can get further details on why the pods couldn't be deployed by running:</p>
+<pre><code class="bash">$ kubectl describe pods *pods_name_here*
+</code></pre>
+
+<p>If your pods are running you can check they are operating as expected by <code>exec</code>ing into them (this gets you a shell on one of your containers).</p>
+<pre><code class="bash">$ kubectl exec -ti *pods_name_here* -c *container_name_here* /bin/sh
+</code></pre>
+
+<blockquote>
+<p><strong>Please note</strong> that the <code>-c</code> argument isn't needed if there is only one container in the pod.*</p>
+</blockquote>
+<h4>3. Investigate potential issues with your service</h4>
+<p>A good way to do this is to run a container in your namespace with a bash terminal:</p>
+<pre><code class="bash">$ kubectl run -ti --image quay.io/ukhomeofficedigital/centos-base debugger bash
+</code></pre>
+
+<p>From this container you can then try curling your service. Your service will have a nice DNS name by default, so you can for example run:</p>
+<pre><code class="bash">$ curl my-service-name
+</code></pre>
+
+<h4>4. Investigate potential issues with ingress</h4>
+<p>Minikube runs an ingress service using nginx. It's possible to ssh into the nginx container and cat the <code>nginx.conf</code> to inspect the configuration for nginx.</p>
+<p>In order to attach to the nginx container, you need to know the name of the container:</p>
+<pre><code class="shell">$ kubectl get pods
+NAME                               READY     STATUS    RESTARTS   AGE
+default-http-backend-2kodr         1/1       Running   1          5d
+acp-hello-world-3757754181-x1kdu   1/1       Running   2          6d
+ingress-3879072234-5f4uq           1/1       Running   2          5d
+</code></pre>
+
+<p>You can attach to the running container with:</p>
+<pre><code class="bash">$ kubectl exec -ti &lt;ingress-3879072234-5f4uq&gt; -c &lt;proxy&gt; bash
+</code></pre>
+
+<p>where <code>&lt;proxy&gt;</code> is the container name of the nginx proxy inside the pod. You can find the name by describing the pod.</p>
+<p>You're inside the container. You can cat the <code>nginx.conf</code> with:</p>
+<pre><code class="bash">$ cat /etc/nginx/nginx.conf
+</code></pre>
+
+<p>You can also inspect the logs with:</p>
+<pre><code class="bash">$ kubectl logs &lt;ingress-3879072234-5f4uq&gt;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

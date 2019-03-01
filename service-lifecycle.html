@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Service Lifecycle - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Service Lifecycle";
+    var mkdocs_page_input_path = "service-lifecycle.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="how-to-docs/index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="service-lifecycle.html">Service Lifecycle</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#service-lifecycle">Service Lifecycle</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#alpha">Alpha</a></li>
+        
+            <li><a class="toctree-l3" href="#beta">Beta</a></li>
+        
+            <li><a class="toctree-l3" href="#live">Live</a></li>
+        
+            <li><a class="toctree-l3" href="#production-ready-criteria">Production-Ready Criteria</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Service Lifecycle</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="service-lifecycle">Service Lifecycle<a class="headerlink" href="#service-lifecycle" title="Permanent link">#</a></h1>
+<p>This defines the current service lifecycle stages. This isn't specific to the hosting platform
+and will no doubt move to somewhere more organistionally wide. However, this is a starting
+point to clearly communicate the phases of our evolution.</p>
+<h2 id="alpha">Alpha<a class="headerlink" href="#alpha" title="Permanent link">#</a></h2>
+<p>Alpha is an experimental phase to test the hypothesis, by building prototypes to validate
+the direction and the intention of the service. It is there to explore ways of achieving and meeting
+the user needs in the right way.</p>
+<p>There is more information on this <a href="https://www.dta.gov.au/standard/service-design-and-delivery-process/">here</a> and
+<a href="http://ausdto.github.io/service-handbook/alpha/1-introduction/1-1-what.html">here</a></p>
+<h2 id="beta">Beta<a class="headerlink" href="#beta" title="Permanent link">#</a></h2>
+<p>This is the phase where software is more feature complete. It is aimed at being functional and meeting the definition
+of a Minimal Viable Product, (MVP). The service is accessible and secured and meets a lot of the production requirements and needs.
+However, there will be an assessment of the service through closed user groups, to evaluate that it meets the user needs.
+SLA's, SLO's and availability may not meet the user expectation of a live service.</p>
+<h2 id="live">Live<a class="headerlink" href="#live" title="Permanent link">#</a></h2>
+<p>Once the products have gone through the beta process, (which is to identify that the MVP is viable), the service will transition to live.
+In live, we are happy that the service has undergone enough evaluation to meet user expectations as well as being able to commit confidentially to SLA's and SLO's.  </p>
+<h2 id="production-ready-criteria">Production-Ready Criteria<a class="headerlink" href="#production-ready-criteria" title="Permanent link">#</a></h2>
+<p>To define what it means to be "production-ready", there is a set of criteria by which we assess services. This is not a concrete
+list and is likely to evolve. We would expect Beta and Live services to adhere to this criteria list, however, it is possible that a beta may decide that
+some are not necessary, depending on the size of the user group and the communication to said group.</p>
+<p>Generally speaking, it is best not to rely or depend on a Beta service.</p>
+<ul>
+<li>Resilient (Recover from Restart)</li>
+<li>Highly available (Multiple Instances)</li>
+<li>Backups of all data</li>
+<li>Validation of backup, (not 0 file size)</li>
+<li>Restores of data tested</li>
+<li>CI Release process</li>
+<li>Continuous deployment (if needed) to prod, (done via CI)</li>
+<li>Is it independent of itself i.e. it doesn't rely on itself</li>
+<li>Tests defined and ran as part of CI process</li>
+<li>Monitoring of product</li>
+<li>Does it have an ATO?</li>
+<li>Monitoring Dashboards produced</li>
+<li>Alerting in place and tested</li>
+<li>Patching Process Defined + Tested</li>
+<li>Intrusion detection in place</li>
+<li>Security tested</li>
+<li>Does it log adequately?</li>
+<li>Logs persisted</li>
+<li>Non root user if docker is used</li>
+<li>Readonly root filesystem and hardening of container</li>
+<li>Documentation in place and standards</li>
+<li>Default Admin Password Changed</li>
+<li>Dev instance / playground</li>
+<li>SSO where needed</li>
+<li>Change Management process defined</li>
+<li>Incident Management process defined (incl agreed SLAs)</li>
+<li>Monitoring of cert expiry</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="external-addresses.html" class="btn btn-neutral" title="ACP External IPs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="external-addresses.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>

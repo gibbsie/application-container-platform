@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Getting a Kubernetes Token - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Getting a Kubernetes Token";
+    var mkdocs_page_input_path = "how-to-docs/kubernetes-user-token.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Getting a Kubernetes Token</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="getting-a-kubernetes-token">Getting a Kubernetes Token<a class="headerlink" href="#getting-a-kubernetes-token" title="Permanent link">#</a></h1>
+<h3 id="users">Users<a class="headerlink" href="#users" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Log into the <a href="https://hub.acp.homeoffice.gov.uk">Platform Hub</a>.</p>
+</li>
+<li>
+<p>Go to the <a href="https://hub.acp.homeoffice.gov.uk/projects/list">Projects</a> section and find your project. On the <strong>Overview &amp; People</strong> tab, you should see a list of team members and the project admin (who will have the admin tag next to their name).</p>
+</li>
+<li>
+<p>Talk to your project admin and ask them to generate a user token for you.</p>
+</li>
+<li>
+<p>Once your token has been created, you will be able to find it in the <a href="https://hub.acp.homeoffice.gov.uk/identities">Connected Identities</a> section. You will need to expand the <strong>Kubernetes</strong> identity and show your full token by clicking the eye icon next to it.</p>
+</li>
+</ol>
+<h3 id="project-admins-creating-a-user-token">Project Admins (Creating a user token)<a class="headerlink" href="#project-admins-creating-a-user-token" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Log into the <a href="https://hub.acp.homeoffice.gov.uk">Platform Hub</a>.</p>
+</li>
+<li>
+<p>Go to the <a href="https://hub.acp.homeoffice.gov.uk/projects/list">Projects</a> section and find your project. Click on the <strong>Kube User Tokens</strong> tab, click <strong>Select a project team member</strong> and select the requesters name from the list.</p>
+</li>
+<li>
+<p>Click <strong>CREATE A NEW KUBERNETES USER TOKEN FOR THIS USER</strong>.</p>
+</li>
+<li>
+<p>Select the required cluster and RBAC group(s) needed for the token and click <strong>Create</strong>.</p>
+</li>
+</ol>
+<blockquote>
+<p>An explanation of RBAC groups can be found here: <a href="https://github.com/UKHomeOffice/application-container-platform/blob/master/docs/rbac.md">RBAC Groups</a></p>
+</blockquote>
+<ol>
+<li>Once the token is created the requester should be able to see it in their <strong>Connected Identities</strong> section for use in their Kube config.</li>
+</ol>
+<p><strong>Note:</strong> Tokens can take a while to propagate so you may have to wait for up to 10 minutes before using a new token.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

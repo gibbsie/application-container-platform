@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Drone How To - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Drone How To";
+    var mkdocs_page_input_path = "how-to-docs/drone-how-to.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../external-addresses.html">ACP External IPs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Drone How To</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="drone-how-to">Drone How To<a class="headerlink" href="#drone-how-to" title="Permanent link">#</a></h1>
+<ul>
+<li>Setup</li>
+<li><a href="#install-drone-cli">Install Drone CLI</a></li>
+<li><a href="#activate-your-pipeline">Activate your pipeline</a></li>
+<li>Adding a repository to Drone</li>
+<li><a href="#configure-your-pipeline">Configure your pipeline</a></li>
+<li>Publishing Docker images to</li>
+<li><a href="#publishing-to-quay">Quay</a></li>
+<li><a href="#publishing-to-artifactory">Artifactory</a></li>
+<li>Deployments</li>
+<li><a href="#deployments-and-promotions">Deployments and promotions</a></li>
+<li><a href="#drone-as-a-pull-request-builder">Drone as a pull request builder</a></li>
+<li><a href="#deploying-to-acp">Deploying to ACP</a></li>
+<li><a href="#using-another-repo">Using Another Repo</a></li>
+<li><a href="#versioned-deployments">Versioned deployments</a></li>
+<li>Migrating your Pipeline</li>
+<li><a href="#secrets-and-signing">Secrets and Signing</a></li>
+<li><a href="#docker-in-docker">Docker in Docker</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#variable-escaping">Variable Escaping</a></li>
+<li>Scanning for Vulnerabilities</li>
+<li><a href="#scanning-images">Scanning Images</a></li>
+<li><a href="#qas">QAs</a></li>
+</ul>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<h3 id="install-drone-cli">Install Drone CLI<a class="headerlink" href="#install-drone-cli" title="Permanent link">#</a></h3>
+<ul>
+<li>Github drone instance: https://drone.acp.homeoffice.gov.uk/</li>
+<li>Gitlab drone instance: https://drone-gitlab.acp.homeoffice.gov.uk/</li>
+</ul>
+<p>Download and install the <a href="https://docs.drone.io/cli-installation/">Drone CLI</a>.</p>
+<blockquote>
+<p>At the time of writing, we are using version 0.8 of Drone.</p>
+</blockquote>
+<p>You can also install a release from <a href="https://github.com/drone/drone-cli/releases">Drone CLI's GitHub repo</a>.
+Once you have downloaded the relevant file, extract it and move it to the <code>/usr/local/bin</code> directory.</p>
+<p>Verify it works as expected:</p>
+<pre><code class="bash">$ drone --version
+drone version 0.8.0
+</code></pre>
+
+<p>Export the <code>DRONE_SERVER</code> and <code>DRONE_TOKEN</code> variables. You can find your token on Drone by clicking the icon in the top right corner and going to <a href="https://drone.acp.homeoffice.gov.uk/account/token">Token</a>.</p>
+<pre><code class="bash">export DRONE_SERVER=https://drone.acp.homeoffice.gov.uk
+export DRONE_TOKEN=&lt;your_drone_token&gt;
+</code></pre>
+
+<p>If your installation is successful, you should be able to query the current Drone instance:</p>
+<pre><code class="bash">$ drone info
+User: youruser
+Email: youremail@gmail.com
+</code></pre>
+
+<blockquote>
+<p>If the output is</p>
+<p><code>bash
+Error: you must provide the Drone server address.</code></p>
+<p>or</p>
+<p><code>Error: you must provide your Drone access token.</code></p>
+<p>Please make sure that you have exported the <code>DRONE_SERVER</code> and <code>DRONE_TOKEN</code> variables properly.</p>
+</blockquote>
+<h3 id="activate-your-pipeline">Activate your pipeline<a class="headerlink" href="#activate-your-pipeline" title="Permanent link">#</a></h3>
+<p>Once you are logged in to Drone, you will find a list of repos by clicking the icon in the top right corner and going to <a href="https://drone.acp.homeoffice.gov.uk/account/repos">Repositories</a>.</p>
+<p>Select the repo you want to activate.</p>
+<p>Navigate to your repository's settings in Github (or Gitlab) and you will see a webhook has been created. You need to update the url for the newly created web hook so that it matches this pattern:</p>
+<pre><code>https://drone-external.acp.homeoffice.gov.uk/hook?access_token=some_token
+</code></pre>
+
+<blockquote>
+<p>If it is already in that format there is no need to change anything.</p>
+<p>The token in the payload url will not be the same as the personal token that you exported and it should be left unchanged.</p>
+<p><strong>Please note that this does not apply to Gitlab. When you activate the repo in Drone, you should not change anything for a Gitlab repo.</strong></p>
+</blockquote>
+<h3 id="configure-your-pipeline">Configure your pipeline<a class="headerlink" href="#configure-your-pipeline" title="Permanent link">#</a></h3>
+<p>In the root folder of your project, create a <code>.drone.yml</code> file with the following content:</p>
+<pre><code class="yaml">pipeline:
+
+  my-build:
+    image: docker:18.03
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker build -t &lt;image_name&gt; .
+    when:
+      branch: master
+      event: push
+</code></pre>
+
+<p>Commit and push your changes:</p>
+<pre><code class="bash">$ git add .drone.yml
+$ git commit
+$ git push origin master
+</code></pre>
+
+<blockquote>
+<p><strong>Please note</strong> you should replace the name &lt;...&gt; with the name of your app.</p>
+</blockquote>
+<p>You should be able to watch your build succeed in the Drone UI.</p>
+<h2 id="publishing-docker-images">Publishing Docker images<a class="headerlink" href="#publishing-docker-images" title="Permanent link">#</a></h2>
+<h3 id="publishing-to-quay">Publishing to Quay<a class="headerlink" href="#publishing-to-quay" title="Permanent link">#</a></h3>
+<p>If your repository is hosted on Gitlab, you don't want to publish your images to Quay. Images published to Quay are public and can be inspected and downloaded by anyone. <a href="#publishing-to-artifactory">You should publish your private images to Artifactory</a>.</p>
+<p>Register for a free <a href="https://quay.io">Quay account</a> using your Github account linked to the Home Office organisation.</p>
+<p>Once you've logged into Quay check that you have <code>ukhomeofficedigital</code> under Users and Organisations.
+If you do not, <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/add-to-quay-org">submit a support request on the platform hub for access to the ukhomeoffice organisation</a>.</p>
+<p>Once you have access to view the <code>ukhomeofficedigital</code> repositories, click repositories and
+click the <code>+ Create New Repositories</code> that is:</p>
+<ul>
+<li>public</li>
+<li>empty - no need to create a repo from a Dockerfile or link it to an existing repository</li>
+</ul>
+<p>Add your project to the UKHomeOffice Quay account and <a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/quay-robot-request">submit a support request on the platform hub for a new Quay robot</a>.</p>
+<p>Add the step to publish the docker image to Quay in your Drone pipeline:</p>
+<pre><code class="yaml">image_to_quay:
+  image: quay.io/ukhomeofficedigital/drone-docker
+  secrets:
+    - docker_password
+  environment:
+    - DOCKER_USERNAME=ukhomeofficedigital+&lt;your_robot_username&gt;
+  registry: quay.io
+  repo: quay.io/ukhomeofficedigital/&lt;your_quay_repo&gt;
+  tags:
+    - ${DRONE_COMMIT_SHA}
+    - latest
+  when:
+    branch: master
+    event: push
+</code></pre>
+
+<p>Where <code>&lt;your_quay_repo&gt;</code> in:</p>
+<pre><code class="yaml">quay.io/ukhomeofficedigital/&lt;your_quay_repo&gt;
+</code></pre>
+
+<p>is the name of the Quay repo you (should) have already created.</p>
+<blockquote>
+<p>Note: ${DRONE_COMMIT_SHA} is a Drone environment variable that is passed to the container at runtime.</p>
+</blockquote>
+<p>The build should fail with the following error:</p>
+<pre><code class="bash">Error response from daemon: Get https://quay.io/v2/: unauthorized: Could not find robot with username: ukhomeofficedigital+&lt;your_robot_username&gt; and supplied password.
+</code></pre>
+
+<p>The error points to the missing password for the Quay robot. You will need to add this as a drone secret.</p>
+<p>You can do this through the Drone UI by going to your repo, clicking the menu icon in the top right and then clicking <strong>Secrets</strong>. You should be presented with a list of the secrets for that repo (if there are any) and you should be able to add secrets giving them a name and value. Add a secret with the name <code>DOCKER_PASSWORD</code> and with the value being the robot token that was supplied to you.</p>
+<p>Alternatively, you can use the Drone CLI to add the secret:</p>
+<pre><code>$ drone secret add --repository ukhomeoffice/&lt;your_github_repo&gt; --name DOCKER_PASSWORD --value &lt;your_robot_token&gt;
+</code></pre>
+
+<p>Restarting the build should be enough to make it pass.</p>
+<blockquote>
+<p>The Drone CLI allows for more control over the secret as opposed to the UI. For example, the CLI allows you to specify the image and the events that the secret will be allowed to be used with.</p>
+<p>Also note that the secret was specified in the <code>secrets</code> section of the pipeline to give it access to the secret. Without this, the pipeline would not be able to use the secret and it would fail. Secrets in this section are automatically uppercased at runtime so it is important that the secret is uppercased in your commands.</p>
+</blockquote>
+<p>You can also push specifically tagged images by using the <code>DRONE_TAG</code> Drone environment variable and by using the <code>tag</code> event:</p>
+<pre><code class="yaml">tagged_image_to_quay:
+  image: quay.io/ukhomeofficedigital/drone-docker
+  secrets:
+    - docker_password
+  environment:
+    - DOCKER_USERNAME=ukhomeofficedigital+&lt;your_robot_username&gt;
+  registry: quay.io
+  repo: quay.io/ukhomeofficedigital/&lt;your_quay_repo&gt;
+  tags:
+    - ${DRONE_TAG}
+  when:
+    event: tag
+</code></pre>
+
+<p>Tag using <code>git tag v1.0</code> and push your tag with <code>git push origin v1.0</code> (replace <code>v1.0</code> with the tag you actually want to use).</p>
+<blockquote>
+<p>Note: These pipeline configurations are using the Docker plugin for Drone. For more information, see http://plugins.drone.io/drone-plugins/drone-docker/</p>
+</blockquote>
+<h3 id="publishing-to-artifactory">Publishing to Artifactory<a class="headerlink" href="#publishing-to-artifactory" title="Permanent link">#</a></h3>
+<p>Images hosted on <a href="https://docker.digital.homeoffice.gov.uk">Artifactory</a> are private.</p>
+<p>If your repository is hosted publicly on GitHub, you shouldn't publish your images to Artifactory. Artifactory is only used to publish private images. <a href="#publishing-to-quay">You should use Quay to publish your public images</a>.</p>
+<p><a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/artifactory-token">Submit a support request for a new Artifactory access token</a>. You should be supplied an access token in response.</p>
+<p>You can inject the token that has been supplied to you with:</p>
+<pre><code>$ drone secret add --repository &lt;gitlab_repo_group&gt;/&lt;your_gitlab_repo&gt; --name DOCKER_PASSWORD --value &lt;your_robot_token&gt;
+</code></pre>
+
+<p>You can add the following step in your <code>.drone.yml</code>:</p>
+<pre><code class="yaml">image_to_artifactory:
+  image: quay.io/ukhomeofficedigital/drone-docker
+  secrets:
+    - docker_password
+  environment:
+    - DOCKER_USERNAME=&lt;your_robots_username&gt;
+  registry: docker.digital.homeoffice.gov.uk
+  repo: docker.digital.homeoffice.gov.uk/&lt;your_artifactory_repo&gt;
+  tags:
+    - ${DRONE_COMMIT_SHA}
+    - latest
+  when:
+    branch: master
+    event: push
+</code></pre>
+
+<p>Where the <code>&lt;image_name&gt;</code> in:</p>
+<pre><code class="yaml">docker tag &lt;image_name&gt; docker.digital.homeoffice.gov.uk/ukhomeofficedigital/&lt;your_artifactory_repo&gt;:$${DRONE_COMMIT_SHA}
+</code></pre>
+
+<p>is the name of the image you tagged previously in the build step.</p>
+<p>The image should now be published on Artifactory.</p>
+<h2 id="deployments">Deployments<a class="headerlink" href="#deployments" title="Permanent link">#</a></h2>
+<h3 id="deployments-and-promotions">Deployments and promotions<a class="headerlink" href="#deployments-and-promotions" title="Permanent link">#</a></h3>
+<p>Create a step that runs only on deployments:</p>
+<pre><code class="yaml">deploy-to-preprod:
+  image: busybox
+  commands:
+    - /bin/echo hello preprod
+  when:
+    environment: preprod
+    event: deployment
+</code></pre>
+
+<p>Push the changes to your remote repository.</p>
+<p>You can deploy the build you just pushed with the following command:</p>
+<pre><code class="bash">$ drone deploy ukhomeoffice/&lt;your_repo&gt; 16 preprod
+</code></pre>
+
+<p>Where <code>16</code> is the successful build number on drone that you wish to deploy to the <code>preprod</code> environment.</p>
+<p>You can pass additional parameters to your deployment as environment variables:</p>
+<pre><code class="bash">$ drone deploy ukhomeoffice/&lt;your_repo&gt; 16 preprod -p DEBUG=1 -p NAME=Dan
+</code></pre>
+
+<p>and use them in the step like this:</p>
+<pre><code class="yaml">deploy-to-preprod:
+  image: busybox
+  commands:
+    - /bin/echo hello $${NAME}
+  when:
+    environment: preprod
+    event: deployment
+</code></pre>
+
+<p>Environments are strings and can be set to any value. When you wish to deploy to several environments you can create a step for each one of them:</p>
+<pre><code class="yaml">deploy-to-preprod:
+  image: busybox
+  commands:
+    - /bin/echo hello preprod
+  when:
+    environment: preprod
+    event: deployment
+
+deploy-to-prod:
+  image: busybox
+  commands:
+    - /bin/echo hello prod
+  when:
+    environment: prod
+    event: deployment
+</code></pre>
+
+<p>And deploy them accordingly:</p>
+<pre><code class="bash">$ drone deploy ukhomeoffice/&lt;your_repo&gt; 16 preprod
+$ drone deploy ukhomeoffice/&lt;your_repo&gt; 16 prod
+</code></pre>
+
+<p>Read more on <a href="http://docs.drone.io/environment/">environments</a>.</p>
+<h3 id="drone-as-a-pull-request-builder">Drone as a Pull Request builder<a class="headerlink" href="#drone-as-a-pull-request-builder" title="Permanent link">#</a></h3>
+<p>Drone pipelines are triggered when events occurs. Event triggers can be as simple as a <em>push</em>, <em>a tagged commit</em>, <em>a pull request</em> or as granular as <em>only for pull requests for a branch named <code>test</code></em>. You can limit the execution of build steps at runtime using the <code>when</code> block. As an example, this block executes only on pull requests:</p>
+<pre><code class="yaml">pr-builder:
+  image: docker:18.03
+  environment:
+    - DOCKER_HOST=tcp://172.17.0.1:2375
+  commands:
+    - docker build -t &lt;image_name&gt; .
+  when:
+    event: pull_request
+</code></pre>
+
+<p>Drone will only execute that step when a new pull request is raised (and when pushes are made to the branch while a pull request is open).</p>
+<p><a href="http://docs.drone.io/conditional-steps/">Read more about Drone conditions</a>.</p>
+<h3 id="deploying-to-acp">Deploying to ACP<a class="headerlink" href="#deploying-to-acp" title="Permanent link">#</a></h3>
+<blockquote>
+<p>Please note that this section assumes that you already have kube files to work with (specifically, deployment, service and ingress files).
+Examples of these files can be found in the <a href="https://github.com/UKHomeOffice/kube-signed-commit-check">kube-signed-commit-check</a> project.</p>
+</blockquote>
+<p>Add a deployment script with the following:</p>
+<pre><code class="bash">#!/bin/bash
+export KUBE_NAMESPACE=&lt;dev-induction&gt;
+export KUBE_SERVER=${KUBE_SERVER}
+export KUBE_TOKEN=${KUBE_TOKEN}
+
+kd  -f deployment.yaml \
+    -f service.yaml \
+    -f ingress.yaml
+</code></pre>
+
+<blockquote>
+<p>Please note that this is only an example script and it will need to be changed to fit your particular application's needs.</p>
+</blockquote>
+<p>If you deployed this now you would likely receive an error similar to this:</p>
+<pre><code class="bash">error: You must be logged in to the server (the server has asked for the client to provide credentials)
+</code></pre>
+
+<p>This error appears because <a href="https://github.com/UKHomeOffice/kd">kd</a> needs 3 environment variables to be set before deploying:</p>
+<ul>
+<li>
+<p><code>KUBE_NAMESPACE</code> - The kubernetes namespace you wish to deploy to. <strong>You need to provide the kubernetes namespace as part of the deployment job</strong>.</p>
+</li>
+<li>
+<p><code>KUBE_TOKEN</code> - This is the token used to authenticate against the kubernetes cluster. <strong>If you do not already have a kube token, <a href="kubernetes-user-token.html">here are docs explaining how to get one</a></strong>.</p>
+</li>
+<li>
+<p><code>KUBE_SERVER</code> - This is the address of the kubernetes cluster that you want to deploy to.</p>
+</li>
+</ul>
+<p>You will need to add <code>KUBE_TOKEN</code> and <code>KUBE_SERVER</code> as drone secrets. Information about how to add Drone secrets can be found in the <a href="#publishing-to-quay">publishing to Quay section</a>.</p>
+<p>You can verify that the secrets for your repo are present with:</p>
+<pre><code class="bash">$ drone secret ls --repository ukhomeoffice/&lt;your-repo&gt;
+</code></pre>
+
+<p>Once the secrets have been added, add a new step to your drone pipeline that will execute the deployment script:</p>
+<pre><code class="yaml">deploy_to_uat:
+  image: quay.io/ukhomeofficedigital/kd:v0.11.0
+  secrets:
+    - kube_server
+    - kube_token
+  commands:
+    - ./deploy.sh
+  when:
+    environment: uat
+    event: deployment
+</code></pre>
+
+<h3 id="using-another-repo">Using Another Repo<a class="headerlink" href="#using-another-repo" title="Permanent link">#</a></h3>
+<p>It is possible to access files or deployment scripts from another repo, there are two ways of doing this.</p>
+<p>The recommended method is to clone another repo in the current repo (since this only requires maintaining one .drone.yml) using the following step:</p>
+<pre><code class="yaml">predeploy_to_uat:
+  image: plugins/git
+  commands:
+    - git clone https://${GITHUB_TOKEN}:x-oauth-basic@github.com/UKHomeOffice/&lt;your_repo&gt;.git
+  when:
+    environment: uat
+    event: deployment
+</code></pre>
+
+<p>Your repository is saved in the workspace, which in turn is shared among all steps in the pipeline.</p>
+<p>However, if you decide that you want to trigger a completely different pipeline on a separate repository, you can leverage the <a href="https://github.com/UKHomeOffice/drone-trigger">drone-trigger</a> plugin. If you have a secondary repository, you can setup Drone on that repository like so:</p>
+<pre><code class="yaml">pipeline:
+  deploy_to_uat:
+    image: busybox
+    commands:
+      - echo ${SHA}
+    when:
+      event: deployment
+      environment: uat
+</code></pre>
+
+<p>Once you are ready, you can push the changes to the remote repository. In your main repository you can add the following step:</p>
+<pre><code class="yaml">trigger_deploy:
+  image: quay.io/ukhomeofficedigital/drone-trigger:latest
+  drone_server: https://drone.acp.homeoffice.gov.uk
+  repo: UKHomeOffice/&lt;deployment_repo&gt;
+  branch: &lt;master&gt;
+  deploy_to: &lt;uat&gt;
+  params: SHA=${DRONE_COMMIT_SHA}
+  when:
+    event: deployment
+    environment: uat
+</code></pre>
+
+<p>The settings are very similar to the <code>drone deploy</code> command:</p>
+<ul>
+<li><code>deploy_to</code> is the <a href="http://docs.drone.io/conditional-steps/#environment">environment constraint</a></li>
+<li><code>params</code> is a list of comma separated list of arguments. In the command line tool, this is equivalent to <code>-p PARAM1=ONE -p PARAM2=TWO</code></li>
+<li><code>repo</code> the repository where the deployment scripts are located</li>
+</ul>
+<p>The next time you trigger a deployment on the main repository with:</p>
+<pre><code class="bash">$ drone deploy UKHomeOffice/&lt;your_repo&gt; 16 uat
+</code></pre>
+
+<p>This will trigger a new deployment on the second repository.</p>
+<p>Please note that in this scenario you need to inspect 2 builds on 2 separate repositories if you just want to inspect the logs.</p>
+<h3 id="versioned-deployments">Versioned deployments<a class="headerlink" href="#versioned-deployments" title="Permanent link">#</a></h3>
+<p>When you restart your build, Drone will automatically use the latest version of the code. However always using the latest version of the deployment configuration can cause major issues and isn't recommended. For example when promoting from preprod to prod you want to use the preprod version of the deployment configuration. If you use the latest it could potentially break your production environment, especially as it won't necessarily have been tested.</p>
+<p>To counteract this you should use a specific version of your deployment scripts. In fact, you should  <code>git checkout</code> the tag or sha as part of your deployment step.</p>
+<p>Here is an example of this:</p>
+<pre><code class="yaml">predeploy_to_uat:
+  image: plugins/git
+  commands:
+    - git clone https://${GITHUB_TOKEN}:x-oauth-basic@github.com/UKHomeOffice/&lt;your_repo&gt;.git
+  when:
+    environment: uat
+    event: deployment
+
+deploy_to_uat:
+  image: quay.io/ukhomeofficedigital/kd:v0.11.0
+  secrets:
+    - kube_server
+    - kube_token
+  commands:
+    - apk update &amp;&amp; apk add git
+    - git checkout v1.1
+    - ./deploy.sh
+  when:
+    environment: uat
+    event: deployment
+</code></pre>
+
+<h2 id="migrating-your-pipeline">Migrating your pipeline<a class="headerlink" href="#migrating-your-pipeline" title="Permanent link">#</a></h2>
+<h3 id="secrets-and-signing">Secrets and Signing<a class="headerlink" href="#secrets-and-signing" title="Permanent link">#</a></h3>
+<p>It is no longer necessary to sign your <code>.drone.yml</code> so the <code>.drone.yml.sig</code> can be deleted. Secrets can be defined in the Drone UI or using the CLI. Secrets created using the UI will be available to push, tag and deployment events. To restrict to selected events, or to allow pull request builds to access secrets you must use the CLI.</p>
+<p>Pipelines by default do not have access to any Drone secrets that you have added. You must now define which secrets a pipeline is allowed access to in a <code>secrets</code> section in your pipeline. Here is an example of a pipeline that has access to the <code>DOCKER_PASSWORD</code> secret which will be used to push an image to Quay:</p>
+<pre><code class="yaml">image_to_quay:
+  image: quay.io/ukhomeofficedigital/drone-docker
+  secrets:
+    - docker_password
+  environment:
+    - DOCKER_USERNAME=ukhomeofficedigital+&lt;your_robot_username&gt;
+  registry: quay.io
+  repo: quay.io/ukhomeofficedigital/&lt;your_quay_repo&gt;
+  tags:
+    - latest
+  when:
+    branch: master
+    event: push
+</code></pre>
+
+<blockquote>
+<p>Note: Secrets names in the <code>secrets</code> section will have their names uppercased at runtime.</p>
+</blockquote>
+<p>Organisation secrets are no longer available. This means that if you are using any organisation secrets such as <code>KUBE_TOKEN_DEV</code>, you will need to add a secret in Drone to replace it.</p>
+<h3 id="docker-in-docker">Docker-in-Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">#</a></h3>
+<p>The Docker-in-Docker (dind) service is no longer required. Instead, change the Docker host to <code>DOCKER_HOST=tcp://172.17.0.1:2375</code> in the <code>environment</code> section of your pipline, and you will be able to access the shared Docker server on the drone agent. Note that it is only possible to run one Docker build at a time per Drone agent.</p>
+<p>Since privileged mode was primarily used for docker in docker, you should remove the <code>privileged: true</code> line from your <code>.drone.yml</code>.</p>
+<p>You can also use your freshly built image directly and run commands as part of your pipeline.</p>
+<p>Example:</p>
+<pre><code class="yaml">pipeline:
+
+  build_image:
+    image: docker:18.03
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker build -t hello_world .
+    when:
+      branch: master
+      event: push
+
+  test_image:
+    image: hello_world
+    commands:
+      - ./run-hello-world.sh
+    when:
+      branch: master
+      event: push
+</code></pre>
+
+<h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">#</a></h3>
+<p>If you use the <code>services</code> section of your <code>.drone.yml</code> it is possible to reference them using the DNS name of the service.</p>
+<p>For example, if using the following section:</p>
+<pre><code class="yaml">services:
+  database:
+    image: mysql
+</code></pre>
+
+<p>The mysql server would be available on <code>tcp://database:3306</code></p>
+<h3 id="variable-escaping">Variable Escaping<a class="headerlink" href="#variable-escaping" title="Permanent link">#</a></h3>
+<p>Any Drone variables (secrets and environment variables) must now be escaped by having two $$ instead of one. Examples:</p>
+<pre><code class="yaml">${DOCKER_PASSWORD} --&gt; $${DOCKER_PASSWORD}
+${DRONE_TAG} --&gt; $${DRONE_TAG}
+${DRONE_COMMIT_SHA} --&gt; $${DRONE_COMMIT_SHA}
+
+</code></pre>
+
+<h3 id="scanning-images">Scanning Images<a class="headerlink" href="#scanning-images" title="Permanent link">#</a></h3>
+<p>ACP provides Anchore as scanning solution to images built into the Drone pipeline, allowing users to scan both ephemeral <em>(built within the context of the drone, but not pushed to a repository yet)</em> as well and well any public images.</p>
+<pre><code class="YAML">pipeline:
+  build:
+    image: docker:17.09.0-ce
+    environment:
+    - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+    - docker build -t docker.digital.homeoffice.gov.uk/myimage:$${DRONE_BUILD_NUMBER} .
+
+  scan:
+    # The location of the drone plugin
+    image: quay.io/ukhomeofficedigital/anchore-submission:latest
+    # The optional path of a Dockerfile
+    dockerfile: Dockerfile
+    # Note the lack of double $ here (due to the way drone injects variables&quot;
+    image_name: docker.digital.homeoffice.gov.uk/myimage:${DRONE_BUILD_NUMBER}
+    # This indicates we are willing tolerate any vulnerabilities which are below medium
+    tolarates: medium
+    # An optional whitelist (comman separated list of CVE's)
+    whitelist: CVE_SOMENAME_1,CVE_SOMENAME_2
+    # An optional whitelist file containing a list of CSV relative to the repo path
+    whitelist_file: &lt;PATH&gt;
+    # By default the pligin will exit will fail if any vulnerabilities are discovered which are not tolarated,
+    # you change this behaviour by setting the bellow
+    fail_on_detection: false
+</code></pre>
+
+<h2 id="qas">Q&amp;As<a class="headerlink" href="#qas" title="Permanent link">#</a></h2>
+<h3 id="q-the-build-fails-with-error-insufficient-privileges-to-use-privileged-mode">Q: The build fails with <em>"ERROR: Insufficient privileges to use privileged mode"</em><a class="headerlink" href="#q-the-build-fails-with-error-insufficient-privileges-to-use-privileged-mode" title="Permanent link">#</a></h3>
+<p>A: Remove <code>privileged: true</code> from your <code>.drone.yml</code>. As explained in the <a href="#migrating-your-pipeline">migrating your pipeline section</a>, the primary use of this was for Docker-in-Docker which is not required.</p>
+<h3 id="q-the-build-fails-with-cannot-connect-to-the-docker-daemon-is-the-docker-daemon-running-on-this-host">Q: The build fails with <em>"Cannot connect to the Docker daemon. Is the docker daemon running on this host?"</em><a class="headerlink" href="#q-the-build-fails-with-cannot-connect-to-the-docker-daemon-is-the-docker-daemon-running-on-this-host" title="Permanent link">#</a></h3>
+<p>A: Make sure that your steps contain the environment variable <code>DOCKER_HOST=tcp://172.17.0.1:2375</code> like in this case:</p>
+<pre><code class="yaml">my-build:
+  image: docker:18.03
+  environment:
+    - DOCKER_HOST=tcp://172.17.0.1:2375
+  commands:
+    - docker build -t &lt;image_name&gt; .
+  when:
+    branch: master
+    event: push
+</code></pre>
+
+<h3 id="q-the-build-fails-when-uploading-to-quay-with-the-error-error-response-from-daemon-get-httpsquayiov2-unauthorized">Q: The build fails when uploading to Quay with the error <em>"Error response from daemon: Get https://quay.io/v2/: unauthorized:..."</em><a class="headerlink" href="#q-the-build-fails-when-uploading-to-quay-with-the-error-error-response-from-daemon-get-httpsquayiov2-unauthorized" title="Permanent link">#</a></h3>
+<p>A: This is likely because the secret wasn't added correctly or the password is incorrect. Check that the secret has been added to Drone and that you have added the <code>secrets</code> section in your <code>.drone.yaml</code> it to the pipeline that requires it.</p>
+<h3 id="q-as-part-of-my-build-process-i-have-two-dockerfiles-to-produce-a-docker-image-how-can-i-share-files-between-builds-in-the-same-step">Q: As part of my build process I have two <code>Dockerfiles</code> to produce a Docker image. How can I share files between builds in the same step?<a class="headerlink" href="#q-as-part-of-my-build-process-i-have-two-dockerfiles-to-produce-a-docker-image-how-can-i-share-files-between-builds-in-the-same-step" title="Permanent link">#</a></h3>
+<p>A: When the pipeline starts, Drone creates a Docker data volume that is passed along all active steps in the pipeline. If the first step creates a <code>test.txt</code> file, the second step can use that file. As an example, this pipeline uses a two step build process:</p>
+<pre><code class="yaml">pipeline:
+
+  first-step:
+    image: busybox
+    commands:
+      - echo hello &gt; test.txt
+    when:
+      branch: master
+      event: push
+
+  second-step:
+    image: busybox
+    commands:
+      - cat test.txt
+    when:
+      branch: master
+      event: push
+</code></pre>
+
+<h3 id="q-should-i-use-gitlab-with-quay">Q: Should I use Gitlab with Quay?<a class="headerlink" href="#q-should-i-use-gitlab-with-quay" title="Permanent link">#</a></h3>
+<p>A: Please don't. If your repository is hosted in Gitlab then use Artifactory to publish your images. Images published to Artifactory are kept private.</p>
+<p>If you still want to use Quay, you should consider hosting your repository on the open (Github).</p>
+<h3 id="q-can-i-create-a-token-that-has-permission-to-create-ephemeraltemporary-namespaces">Q: Can I create a token that has permission to create ephemeral/temporary namespaces?<a class="headerlink" href="#q-can-i-create-a-token-that-has-permission-to-create-ephemeraltemporary-namespaces" title="Permanent link">#</a></h3>
+<p>A: No. This is because there is currently no way to give access to namespaces via regex.</p>
+<p>I.e. There is no way to give access to any namespace with the format: <code>my-temp-namespace-*</code> (where * would be build number or something similar).</p>
+<p>Alternatively, you can be given a named namespace in the CI cluster. Please create an issue on our <a href="https://github.com/UKHomeOffice/application-container-platform-bau">BAU board</a> if you require this.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

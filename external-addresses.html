@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>ACP External IPs - Application Container Platform</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ACP External IPs";
+    var mkdocs_page_input_path = "external-addresses.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Application Container Platform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="index.html">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="services.html">Services</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="releases-notes/index.html">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="how-to-docs/index.html">How To's</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="developer-docs/index.html">Developer Getting Started Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="newuser.html">New User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="rbac.html">RBAC Guide</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="external-addresses.html">ACP External IPs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#acp-external-addresses">ACP External Addresses</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="service-lifecycle.html">Service Lifecycle</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Application Container Platform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ACP External IPs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="acp-external-addresses">ACP External Addresses<a class="headerlink" href="#acp-external-addresses" title="Permanent link">#</a></h1>
+<p>The ACP clusters all run behind NAT gateways, with fixed external addresses. Note, unless you've specifically choosen to run in a specific availability zone, your pods can run in any of the AZ's for that cluster, so all three addresses should be taken as the external ip's.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Cluster</th>
+<th align="center">Zone</th>
+<th align="center">External Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ACP-CI</td>
+<td align="center">eu-west-2a</td>
+<td align="center">52.56.254.215</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">35.176.205.192</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">35.178.14.117</td>
+</tr>
+<tr>
+<td align="center">ACP-OPS</td>
+<td align="center">eu-west-2a</td>
+<td align="center">35.176.238.26</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">35.177.41.205</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">35.176.100.151</td>
+</tr>
+<tr>
+<td align="center">ACP-PROD</td>
+<td align="center">eu-west-2a</td>
+<td align="center">35.177.82.170</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">52.56.249.216</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">35.176.70.245</td>
+</tr>
+<tr>
+<td align="center">ACP-PROD-PX</td>
+<td align="center">eu-west-2a</td>
+<td align="center">35.177.156.249</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">35.177.245.179</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">35.177.14.177</td>
+</tr>
+<tr>
+<td align="center">ACP-NOTPROD</td>
+<td align="center">eu-west-2a</td>
+<td align="center">35.177.248.60</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">35.176.168.231</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">52.56.158.209</td>
+</tr>
+<tr>
+<td align="center">ACP-NOTPROD-PX</td>
+<td align="center">eu-west-2a</td>
+<td align="center">52.56.221.144</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">52.56.45.52</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">35.177.167.246</td>
+</tr>
+<tr>
+<td align="center">ACP-TEST</td>
+<td align="center">eu-west-2a</td>
+<td align="center">35.176.184.49</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">35.176.217.238</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">35.177.169.118</td>
+</tr>
+<tr>
+<td align="center">ACP-VPN (Access)</td>
+<td align="center">eu-west-2a</td>
+<td align="center">52.56.221.216</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2b</td>
+<td align="center">18.130.11.142</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">eu-west-2c</td>
+<td align="center">18.130.6.5</td>
+</tr>
+</tbody>
+</table>
+<p>Note: The ACP-VPN external IPs addresses only work for the "Tunnel All Traffic" VPN profiles.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="service-lifecycle.html" class="btn btn-neutral float-right" title="Service Lifecycle">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="rbac.html" class="btn btn-neutral" title="RBAC Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="rbac.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="service-lifecycle.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
