@@ -295,6 +295,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scanning-images-in-drone" title="Scanning Images in Drone" class="md-nav__link">
+    Scanning Images in Drone
+  </a>
+  
+</li>
+      
       
       
       
@@ -754,7 +761,7 @@ ${DRONE_COMMIT_SHA} --&gt; $${DRONE_COMMIT_SHA}
 
 </code></pre>
 
-<h4>Scanning Images</h4>
+<h2 id="scanning-images-in-drone">Scanning Images in Drone<a class="headerlink" href="#scanning-images-in-drone" title="Permanent link">#</a></h2>
 <p>ACP provides Anchore as scanning solution to images built into the Drone pipeline, allowing users to scan both ephemeral <em>(built within the context of the drone, but not pushed to a repository yet)</em> as well and well any public images.</p>
 <pre><code class="YAML">pipeline:
   build:
