@@ -315,11 +315,6 @@
                   <h1>Private npm registry</h1>
                 
                 <h2 id="using-artifactory-as-a-private-npm-registry">Using artifactory as a private npm registry<a class="headerlink" href="#using-artifactory-as-a-private-npm-registry" title="Permanent link">#</a></h2>
-<div class="toc">
-<ul>
-<li><a href="#using-artifactory-as-a-private-npm-registry">Using artifactory as a private npm registry</a></li>
-</ul>
-</div>
 <p>A step-by-step guide.</p>
 <p>This guide makes the following assumptions:</p>
 <ul>
@@ -358,6 +353,7 @@ export NPM_AUTH_TOKEN=&lt;base64 encoded api key&gt;
 <pre><code>drone secret add UKHomeOffice/&lt;repo&gt; NPM_AUTH_TOKEN &lt;base64-encoded-token&gt; --event pull_request
 </code></pre>
 
+<p><strong>Note: You will need to make sure the event types are lowercase. If an event is capitalised, it won't match the standard events inside of drone</strong></p>
 <p>Note: you will need to make the secret available to pull request builds to be able to run npm commands in pull request steps</p>
 <h5>Expose secret to build steps</h5>
 <p>You will need to configure any steps which use npm to be able to access the secret. Do this by adding a <code>secret</code> property to those steps as follows:</p>
