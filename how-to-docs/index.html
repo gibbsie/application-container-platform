@@ -717,7 +717,7 @@ spec:
 <p><em>The Problem</em>: we want to provide services running in ACP access to the third party services as well as the ability to have user-based access controls. At present network access in ACP is provided via Calico, but this becomes redundant when the traffic egresses the cluster. Simply peering networks together either through VPC peering or VPN connections doesn't provide the controls we want. We could rely on user-authentication on third-party service but not all services are authenticated (take POISE) and beyond that peering networks provides no means of auditing traffic that is traversing the bridged networks.</p>
 </blockquote>
 <p>One pattern we are exploring is the use of a proxy cluster with an authenticated side-kick to route traffic and provide end-to-end encryption. Both ACP Notprod and Prod are peered to an respective proxy cluster that is running a <a href="https://github.com/jpillora/chisel">Chisel</a> server. Below is rough idea of how the chisel service works.</p>
-<p><img alt="alt text" src="https://github.com/UKHomeOffice/application-container-platform/blob/master/how-to-docs/pics/chisel.png" title="Chisel" /></p>
+<p><img alt="alt text" src="https://github.com/UKHomeOffice/application-container-platform/blob/master/docs/how-to-docs/pics/chisel.png" title="Chisel" /></p>
 <p>The workflow for this is as follows, note the following example is assuming we have peered with a network in the proxy cluster which is exposing x services.</p>
 <ul>
 <li>A request via BAU the provisioning of a service on the Chisel server.</li>
@@ -752,7 +752,7 @@ spec:
       - name: consumer
         image: quay.io/ukhomeofficedigital/someimage:someversion
       - name: chisel
-        image: quay.io/ukhomeofficedigital/chisel:latest
+        image: quay.io/ukhomeofficedigital/chisel:v1.3.1 # Both Chisel Client &amp; Server versions must match
         securityContext:
           runAsNonRoot: true
         env:
