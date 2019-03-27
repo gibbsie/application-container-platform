@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
     
     
       
@@ -861,8 +861,8 @@ ingress-3879072234-5f4uq           1/1       Running   2          5d
 <h2 id="dms-migration">DMS Migration<a class="headerlink" href="#dms-migration" title="Permanent link">#</a></h2>
 <h4><strong>Prerequisite</strong></h4>
 <p>The following need to be true before you follow this guide:
-<em> AWS console logon
-</em> Access to the DMS service from console
+* AWS console logon
+* Access to the DMS service from console
 * A region where STS has been activated</p>
 <h4><strong>DMS Setup</strong></h4>
 <p>Login to the AWS console using your auth, switch to a role with the correct access policies and verify you're in the right region. Next, select DMS from the services on the main dashboard to access the data migration home screen. Under the "Get started" section click on the "create migration" button then next to the Replication instance. You should see the following screen:</p>
@@ -1650,9 +1650,9 @@ ${DRONE_COMMIT_SHA} --&gt; $${DRONE_COMMIT_SHA}
 </blockquote>
 <h4>Pre-Requisites</h4>
 <p>To follow the below steps you must have:
-<em> AWS CLI (version 1.11.91 or above, check with <code>aws --version</code>)
+* AWS CLI (version 1.11.91 or above, check with <code>aws --version</code>)
   * Install Guides: <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html">Linux</a>, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html">OSX</a>, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html">Windows</a>
-</em> Docker (version 17.06 or above, check with <code>docker --version</code>)</p>
+* Docker (version 17.06 or above, check with <code>docker --version</code>)</p>
 <h4>Step 1: Retrieve an authorisation token</h4>
 <ol>
 <li>Navigate to the <code>Connected Identities</code> page: https://hub.acp.homeoffice.gov.uk/identities</li>
@@ -1718,6 +1718,48 @@ $ docker pull 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/hello-world-app:v
 sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f: Pulling from acp/hello-world-app
 Digest: sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f
 Status: Image is up to date for 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/hello-world-app@sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f
+</code></pre>
+
+<h4>Listing Images &amp; Housekeeping</h4>
+<p>Using the AWS CLI you can list all images that have been pushed to a given repository which you have access to.</p>
+<p>For example:</p>
+<pre><code class="sh">$ aws ecr list-images --repository-name acp/hello-world-app
+{
+    &quot;imageIds&quot;: [
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;v0.0.1&quot;
+        },
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;latest&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>To delete old images, you must have write access enabled or perform the action via a Robot Account. Images can be deleted based on a provided tag or digest. When providing a digest, all image tags with the same digest are deleted together.</p>
+<pre><code class="sh">$ aws ecr batch-delete-image --repository-name acp/hello-world-app --image-ids imageTag=v0.0.1
+{
+    &quot;imageIds&quot;: [
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;v0.0.1&quot;
+        }
+    ],
+    &quot;failures&quot;: []
+}
+
+$ aws ecr batch-delete-image --repository-name acp/hello-world-app --image-ids imageDigest=sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f
+{
+    &quot;imageIds&quot;: [
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;latest&quot;
+        }
+    ],
+    &quot;failures&quot;: []
+}
 </code></pre>
 
 <h4>Managing Image Deployments via Drone CI</h4>
@@ -2506,7 +2548,7 @@ https://github.com/UKHomeOffice/docker-centos-base</p>
       
     </div>
     
-      <script src="../assets/javascripts/application.d9aa80ab.js"></script>
+      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
