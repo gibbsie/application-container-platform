@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
     
     
       
@@ -402,7 +402,6 @@ Head to <a href="https://hub.acp.homeoffice.gov.uk/">Platform Hub</a>, you will 
 <li><a href="#install-docker">Docker</a></li>
 <li><a href="#install-drone">Drone</a></li>
 <li><a href="#install-kubectl">Kubectl</a></li>
-<li><a href="#install-aws-cli">AWS CLI</a></li>
 </ul>
 <h4>Install Git</h4>
 <p>Verify if you have Git installed by:</p>
@@ -418,29 +417,19 @@ git version 2.16.2
 <p>You can follow the instructions to install <code>docker</code> from the <a href="https://docs.docker.com/engine/installation/">Docker website</a>. You can verify the installation is successful with:</p>
 <pre><code class="bash">$ docker --version
 Docker version 18.03.1-ce, build 9ee9f40
-
-# version 17.06 or above is required
 </code></pre>
 
 <h4>Install Drone</h4>
-<p>Drone CLI can be downloaded from the <a href="http://docs.drone.io/cli-installation/">Drone CI website</a>. Instructions installing on multiple operating systems are shown on the webpage. Currently our drone instance is compatible with <code>drone 0.8.6</code>, which can be found <a href="https://github.com/drone/drone-cli/releases/tag/v0.8.6">here</a></p>
+<p>Drone CLI can be downloaded from the <a href="http://docs.drone.io/cli-installation/">Drone CI website</a>. Instructions installing on multiple operating systems are shown on the webpage.</p>
 <p>Verify that the installation is successful:</p>
 <pre><code class="bash">$ drone --version
-drone version 0.8.6
+drone version 0.8.0
 </code></pre>
 
 <h4>Install Kubectl</h4>
 <p>You can follow the instructions to install version 1.8 of <code>kubectl</code> from the <a href="http://kubernetes.io/docs/user-guide/prereqs/">Kubernetes website</a>. You can verify the installation is successful with:</p>
 <pre><code class="bash">$ kubectl version
 Client Version: version.Info{Major:&quot;1&quot;, Minor:&quot;8&quot;, GitVersion:&quot;v1.8.4&quot;, GitCommit:&quot;9befc2b8928a9426501d3bf62f72849d5cbcd5a3&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2017-11-20T05:28:34Z&quot;, GoVersion:&quot;go1.8.3&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;}
-</code></pre>
-
-<h4>Install AWS CLI</h4>
-<p>Follow the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">official AWS documentation</a> for instructions to install the AWS CLI. You can verify the installation is successful with:</p>
-<pre><code class="bash">$ aws --version
-aws-cli/1.16.28 Python/2.7.10 Darwin/18.2.0 botocore/1.12.18
-
-# version 1.11.91 or above is required
 </code></pre>
 
 <h4>Connecting to the cluster</h4>
@@ -492,7 +481,7 @@ default-token-dcnmg   kubernetes.io/service-account-token   3         105d
       
     </div>
     
-      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
+      <script src="../assets/javascripts/application.d9aa80ab.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
