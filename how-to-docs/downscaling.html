@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
     
     
       
@@ -315,9 +315,9 @@
                   <h1>Downscaling</h1>
                 
                 <h2 id="downscaling-services-out-of-hours">Downscaling Services Out Of Hours<a class="headerlink" href="#downscaling-services-out-of-hours" title="Permanent link">#</a></h2>
-<p>In an effort to reduce costs on running the platform, we've enabled to capability to scale down specific resources Out Of Hours (OOH) for Non-Production environments.</p>
+<p>In an effort to reduce costs on running the platform, we've enabled to capability to scale down specific resources Out Of Hours (OOH) for Non-Production and Production environments.</p>
 <h4>AWS RDS (Relational Database Service)</h4>
-<p>Non-Production RDS resources can be transitioned to a stopped state OOH to save on resource utilisation costs. This is currently managed with the use of tags on the RDS instance defining a cronjob schedule to stop and start the instance.</p>
+<p>RDS resources can be transitioned to a stopped state OOH to save on resource utilisation costs. This is currently managed with the use of tags on the RDS instance defining a cronjob schedule to stop and start the instance.</p>
 <p>To set a schedule for your RDS instances, please use the related Platform Hub support request template titled <strong><a href="https://hub.acp.homeoffice.gov.uk/help/support/requests/new/rds-scheduling">"Shutdown RDS Instance(s) Out Of Hours"</a></strong>.</p>
 <blockquote>
 <p><strong>Note:</strong> Shutting down an RDS instance will have cost savings based on the instance size, however you will still be charged for the allocated storage.</p>
@@ -386,7 +386,7 @@ spec:
       
     </div>
     
-      <script src="../assets/javascripts/application.d9aa80ab.js"></script>
+      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       

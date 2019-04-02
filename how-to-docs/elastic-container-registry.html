@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.0">
     
     
       
@@ -45,7 +45,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
     
     
       
@@ -357,9 +357,9 @@
 </blockquote>
 <h4>Pre-Requisites</h4>
 <p>To follow the below steps you must have:
-<em> AWS CLI (version 1.11.91 or above, check with <code>aws --version</code>)
+* AWS CLI (version 1.11.91 or above, check with <code>aws --version</code>)
   * Install Guides: <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html">Linux</a>, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html">OSX</a>, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html">Windows</a>
-</em> Docker (version 17.06 or above, check with <code>docker --version</code>)</p>
+* Docker (version 17.06 or above, check with <code>docker --version</code>)</p>
 <h4>Step 1: Retrieve an authorisation token</h4>
 <ol>
 <li>Navigate to the <code>Connected Identities</code> page: https://hub.acp.homeoffice.gov.uk/identities</li>
@@ -427,6 +427,48 @@ Digest: sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f
 Status: Image is up to date for 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/hello-world-app@sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f
 </code></pre>
 
+<h4>Listing Images &amp; Housekeeping</h4>
+<p>Using the AWS CLI you can list all images that have been pushed to a given repository which you have access to.</p>
+<p>For example:</p>
+<pre><code class="sh">$ aws ecr list-images --repository-name acp/hello-world-app
+{
+    &quot;imageIds&quot;: [
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;v0.0.1&quot;
+        },
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;latest&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>To delete old images, you must have write access enabled or perform the action via a Robot Account. Images can be deleted based on a provided tag or digest. When providing a digest, all image tags with the same digest are deleted together.</p>
+<pre><code class="sh">$ aws ecr batch-delete-image --repository-name acp/hello-world-app --image-ids imageTag=v0.0.1
+{
+    &quot;imageIds&quot;: [
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;v0.0.1&quot;
+        }
+    ],
+    &quot;failures&quot;: []
+}
+
+$ aws ecr batch-delete-image --repository-name acp/hello-world-app --image-ids imageDigest=sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f
+{
+    &quot;imageIds&quot;: [
+        {
+            &quot;imageDigest&quot;: &quot;sha256:0309d2655ecef6b4181ee93edfb91f386fc2ebc7849cc88f6e7a18b0d349c35f&quot;,
+            &quot;imageTag&quot;: &quot;latest&quot;
+        }
+    ],
+    &quot;failures&quot;: []
+}
+</code></pre>
+
 <h4>Managing Image Deployments via Drone CI</h4>
 <p>The Docker Authorisation Token generated via the aws-cli command is only valid for 12 hours, and so this can't be used as a Drone Secret for Docker Image builds. Instead, you would need to store the IAM Credentials for a Robot Account as Drone Secrets and perform the <code>aws ecr get-login</code> + <code>docker login ..</code> step on each build.</p>
 <p>To simplify this process you can use a custom Drone ECR plugin, which:
@@ -485,7 +527,7 @@ Status: Image is up to date for 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp
       
     </div>
     
-      <script src="../assets/javascripts/application.d9aa80ab.js"></script>
+      <script src="../assets/javascripts/application.2ba8dec4.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
